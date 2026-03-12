@@ -3787,10 +3787,351 @@
           }
         }
       }
+    },
+    "/api/v1/countries": {
+      "get": {
+        "tags": [
+          "Countries"
+        ],
+        "summary": "List countries.",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "isActive",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/countries/{code}/activate": {
+      "put": {
+        "tags": [
+          "Countries"
+        ],
+        "summary": "Activate a country.",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/countries/{code}/deactivate": {
+      "put": {
+        "tags": [
+          "Countries"
+        ],
+        "summary": "Deactivate a country.",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/countries/{code}/regions": {
+      "get": {
+        "tags": [
+          "Countries"
+        ],
+        "summary": "List regions for a country.",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "isActive",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegionResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegionResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegionResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/countries/{code}/address-format": {
+      "put": {
+        "tags": [
+          "Countries"
+        ],
+        "summary": "Upsert the address format for a country.",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertAddressFormatRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertAddressFormatRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertAddressFormatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpsertAddressFormatResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpsertAddressFormatResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpsertAddressFormatResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "AddressFormatFieldRequest": {
+        "required": [
+          "fieldName",
+          "order",
+          "isRequired"
+        ],
+        "type": "object",
+        "properties": {
+          "fieldName": {
+            "type": "string"
+          },
+          "order": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "isRequired": {
+            "type": "boolean"
+          }
+        }
+      },
       "AllocateNextNumberResponse": {
         "required": [
           "formattedNumber"
@@ -4225,6 +4566,63 @@
           },
           "reason": {
             "$ref": "#/components/schemas/AnonymizationReason"
+          }
+        }
+      },
+      "CountryResponse": {
+        "required": [
+          "countryId",
+          "countryCodeAlpha2",
+          "countryCodeAlpha3",
+          "countryCodeNumeric",
+          "countryName",
+          "countryNameEN",
+          "phonePrefix",
+          "postalCodeFormat",
+          "isEuMember",
+          "isActive"
+        ],
+        "type": "object",
+        "properties": {
+          "countryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "countryCodeAlpha2": {
+            "type": "string"
+          },
+          "countryCodeAlpha3": {
+            "type": "string"
+          },
+          "countryCodeNumeric": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "countryName": {
+            "type": "string"
+          },
+          "countryNameEN": {
+            "type": "string"
+          },
+          "phonePrefix": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "postalCodeFormat": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "isEuMember": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
           }
         }
       },
@@ -5016,6 +5414,34 @@
           }
         }
       },
+      "RegionResponse": {
+        "required": [
+          "regionId",
+          "regionCode",
+          "regionName",
+          "countryCodeAlpha2",
+          "isActive"
+        ],
+        "type": "object",
+        "properties": {
+          "regionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "regionCode": {
+            "type": "string"
+          },
+          "regionName": {
+            "type": "string"
+          },
+          "countryCodeAlpha2": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
       "ResolveTaxRateResponse": {
         "required": [
           "taxRateId",
@@ -5585,6 +6011,32 @@
           }
         }
       },
+      "UpsertAddressFormatRequest": {
+        "required": [
+          "fields"
+        ],
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressFormatFieldRequest"
+            }
+          }
+        }
+      },
+      "UpsertAddressFormatResponse": {
+        "required": [
+          "addressFormatId"
+        ],
+        "type": "object",
+        "properties": {
+          "addressFormatId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
       "UpsertLocalePreferenceRequest": {
         "required": [
           "language",
@@ -5746,6 +6198,9 @@
     },
     {
       "name": "DataProtection"
+    },
+    {
+      "name": "Countries"
     }
   ]
 }
