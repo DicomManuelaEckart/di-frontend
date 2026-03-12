@@ -10,6 +10,7 @@
         "tags": [
           "Blueprint"
         ],
+        "summary": "Get a blueprint article by ID with ETag support.",
         "operationId": "GetBlueprintArticleWithETag",
         "parameters": [
           {
@@ -32,6 +33,7 @@
         "tags": [
           "Blueprint"
         ],
+        "summary": "Update a blueprint article with optimistic concurrency via If-Match.",
         "operationId": "UpdateBlueprintArticle",
         "parameters": [
           {
@@ -100,6 +102,7 @@
         "tags": [
           "Echo"
         ],
+        "summary": "Returns a simple echo response for connectivity checks.",
         "responses": {
           "200": {
             "description": "OK",
@@ -129,6 +132,7 @@
         "tags": [
           "Me"
         ],
+        "summary": "Returns the effective security identity of the authenticated caller.",
         "responses": {
           "200": {
             "description": "OK",
@@ -176,8 +180,9 @@
     "/me/permissions": {
       "get": {
         "tags": [
-          "MePermissions"
+          "Me"
         ],
+        "summary": "Returns the effective permissions of the authenticated caller.",
         "responses": {
           "200": {
             "description": "OK",
@@ -245,8 +250,9 @@
     "/v1/permissions": {
       "get": {
         "tags": [
-          "PermissionsCatalog"
+          "Permissions"
         ],
+        "summary": "Returns the full permission catalog.",
         "responses": {
           "200": {
             "description": "OK",
@@ -314,8 +320,10 @@
     "/api/v1/me/locale": {
       "get": {
         "tags": [
-          "LocalePreference"
+          "Me",
+          "Locale"
         ],
+        "summary": "Returns locale preferences for the authenticated user.",
         "responses": {
           "200": {
             "description": "OK",
@@ -361,8 +369,10 @@
       },
       "put": {
         "tags": [
-          "LocalePreference"
+          "Me",
+          "Locale"
         ],
+        "summary": "Create or update locale preferences for the authenticated user.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -452,6 +462,7 @@
         "tags": [
           "Blueprint"
         ],
+        "summary": "Execute a blueprint command.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -542,8 +553,9 @@
     "/v1/blueprint/customers": {
       "get": {
         "tags": [
-          "BlueprintCustomers"
+          "Blueprint"
         ],
+        "summary": "List blueprint customers with pagination, sorting, and filtering.",
         "parameters": [
           {
             "name": "page",
@@ -682,8 +694,10 @@
     "/v1/admin/seed/demo": {
       "post": {
         "tags": [
-          "AdminSeed"
+          "Admin",
+          "Seed"
         ],
+        "summary": "Trigger business demo data seeding for the current tenant.",
         "responses": {
           "200": {
             "description": "OK"
@@ -1166,6 +1180,7 @@
         "tags": [
           "Translations"
         ],
+        "summary": "List translations with optional module filter.",
         "parameters": [
           {
             "name": "module",
@@ -1250,6 +1265,7 @@
         "tags": [
           "Translations"
         ],
+        "summary": "Returns a single translation by key.",
         "parameters": [
           {
             "name": "key",
@@ -1307,6 +1323,7 @@
         "tags": [
           "Translations"
         ],
+        "summary": "Create or update a translation by key.",
         "parameters": [
           {
             "name": "key",
@@ -1384,6 +1401,7 @@
         "tags": [
           "Translations"
         ],
+        "summary": "Delete a translation by key.",
         "parameters": [
           {
             "name": "key",
@@ -1426,6 +1444,7 @@
         "tags": [
           "Translations"
         ],
+        "summary": "Bulk-import translations from JSON content.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1495,6 +1514,7 @@
         "tags": [
           "Translations"
         ],
+        "summary": "Export translations grouped by language.",
         "parameters": [
           {
             "name": "module",
@@ -1663,6 +1683,7 @@
         "tags": [
           "TenantLocale"
         ],
+        "summary": "Returns the locale settings for the current tenant.",
         "responses": {
           "200": {
             "description": "OK",
@@ -1690,6 +1711,7 @@
         "tags": [
           "TenantLocale"
         ],
+        "summary": "Create or update the locale settings for the current tenant.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6808,70 +6830,151 @@
   },
   "tags": [
     {
-      "name": "Blueprint"
+      "name": "Me",
+      "description": "Authenticated user identity and preferences"
     },
     {
-      "name": "Operations"
+      "name": "Locale",
+      "description": "User locale preferences"
     },
     {
-      "name": "Echo"
+      "name": "Permissions",
+      "description": "Permission catalog and effective permissions"
     },
     {
-      "name": "Me"
+      "name": "Countries",
+      "description": "Country and region master data"
     },
     {
-      "name": "MePermissions"
+      "name": "Currencies",
+      "description": "Currency master data"
     },
     {
-      "name": "PermissionsCatalog"
+      "name": "TaxRates",
+      "description": "Tax rate management and resolution"
     },
     {
-      "name": "LocalePreference"
+      "name": "ExchangeRates",
+      "description": "Exchange rate management and resolution"
     },
     {
-      "name": "BlueprintCustomers"
+      "name": "NumberSequences",
+      "description": "Number sequence management and allocation"
     },
     {
-      "name": "AdminSeed"
+      "name": "SystemSettings",
+      "description": "Tenant-scoped system settings"
     },
     {
-      "name": "Admin"
+      "name": "Tenants",
+      "description": "Tenant provisioning and management"
     },
     {
-      "name": "Audit"
+      "name": "TenantLocale",
+      "description": "Tenant locale configuration"
     },
     {
-      "name": "Features"
+      "name": "Translations",
+      "description": "Multilingual translation management"
     },
     {
-      "name": "Translations"
+      "name": "Documents",
+      "description": "Document upload, download, and deletion"
     },
     {
-      "name": "Tenants"
+      "name": "Features",
+      "description": "Feature flag status"
     },
     {
-      "name": "TenantLocale"
+      "name": "Audit",
+      "description": "Audit trail queries"
     },
     {
-      "name": "TaxRates"
+      "name": "DataProtection",
+      "description": "GDPR data protection operations"
     },
     {
-      "name": "SystemSettings"
+      "name": "Admin",
+      "description": "Administrative operations"
     },
     {
-      "name": "NumberSequences"
+      "name": "Seed",
+      "description": "Demo data seeding (non-production)"
     },
     {
-      "name": "ExchangeRates"
+      "name": "Operations",
+      "description": "Deployment gates and operational endpoints"
     },
     {
-      "name": "DataProtection"
+      "name": "Blueprint",
+      "description": "Blueprint reference implementation"
     },
     {
-      "name": "Currencies"
+      "name": "Echo",
+      "description": "Connectivity and smoke test"
     },
     {
-      "name": "Countries"
+      "name": "Internal",
+      "description": "Internal webhook endpoints"
+    }
+  ],
+  "x-tagGroups": [
+    {
+      "name": "Identity",
+      "tags": [
+        "Me",
+        "Locale",
+        "Permissions"
+      ]
+    },
+    {
+      "name": "Organization",
+      "tags": [
+        "Tenants",
+        "TenantLocale",
+        "Translations",
+        "Countries",
+        "Currencies",
+        "TaxRates",
+        "ExchangeRates",
+        "NumberSequences",
+        "SystemSettings",
+        "Admin",
+        "Features",
+        "Seed"
+      ]
+    },
+    {
+      "name": "Documents",
+      "tags": [
+        "Documents"
+      ]
+    },
+    {
+      "name": "Audit",
+      "tags": [
+        "Audit",
+        "DataProtection"
+      ]
+    },
+    {
+      "name": "Operations",
+      "tags": [
+        "Operations"
+      ]
+    },
+    {
+      "name": "Reference",
+      "tags": [
+        "Blueprint",
+        "Echo"
+      ]
+    },
+    {
+      "name": "Internal",
+      "tags": [
+        "Internal"
+      ]
     }
   ]
 }
