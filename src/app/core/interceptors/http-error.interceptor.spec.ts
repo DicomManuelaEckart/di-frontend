@@ -85,7 +85,7 @@ describe('httpErrorInterceptor', () => {
     const req = httpTesting.expectOne('/api/test');
     req.flush(null, { status: 404, statusText: 'Not Found' });
 
-    expect(showWarningSpy).toHaveBeenCalledWith('errors.notFound');
+    expect(showWarningSpy).toHaveBeenCalledWith('errors.resourceNotFound');
   });
 
   it('should extract title from ProblemDetails on 404', () => {

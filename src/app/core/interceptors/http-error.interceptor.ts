@@ -42,7 +42,7 @@ export const httpErrorInterceptor: HttpInterceptorFn = (
 
       if (error.status === 404) {
         const problem = parseProblemDetails(error);
-        const message = problem?.title ?? 'errors.notFound';
+        const message = problem?.title ?? 'errors.resourceNotFound';
         notificationService.showWarning(message);
         return throwError(() => error);
       }

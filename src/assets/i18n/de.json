@@ -44,9 +44,10 @@
     "serverError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
     "clientError": "Die Anfrage konnte nicht verarbeitet werden.",
     "networkError": "Keine Verbindung zum Server. Bitte prüfen Sie Ihre Internetverbindung.",
+    "resourceNotFound": "Die angeforderte Ressource wurde nicht gefunden.",
     "conflict": "Der Datensatz wurde zwischenzeitlich geändert. Bitte laden Sie die Daten neu.",
-    "unknownError": "Ein unbekannter Fehler ist aufgetreten.",
-    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten.",
+    "unknownError": "Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+    "unexpectedError": "Ein unerwarteter Anwendungsfehler ist aufgetreten.",
     "correlationIdHint": "Fehler-ID: {{correlationId}}"
   },
   "language": {

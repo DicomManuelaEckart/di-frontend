@@ -44,9 +44,10 @@
     "serverError": "An unexpected error occurred. Please try again later.",
     "clientError": "The request could not be processed.",
     "networkError": "No connection to the server. Please check your internet connection.",
+    "resourceNotFound": "The requested resource was not found.",
     "conflict": "The record has been modified. Please reload the data.",
-    "unknownError": "An unknown error occurred.",
-    "unexpectedError": "An unexpected error occurred.",
+    "unknownError": "An unknown error occurred. Please try again later.",
+    "unexpectedError": "An unexpected application error occurred.",
     "correlationIdHint": "Error ID: {{correlationId}}"
   },
   "language": {
