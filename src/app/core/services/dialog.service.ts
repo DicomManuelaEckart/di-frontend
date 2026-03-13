@@ -2,6 +2,7 @@ import {
   ApplicationRef,
   ComponentRef,
   createComponent,
+  EmbeddedViewRef,
   EnvironmentInjector,
   inject,
   Injectable,
@@ -55,7 +56,7 @@ export class DialogService {
     instance['dialogRef'] = dialogRef;
 
     this.appRef.attachView(componentRef.hostView);
-    const domElem = (componentRef.hostView as never as { rootNodes: HTMLElement[] }).rootNodes[0];
+    const domElem = (componentRef.hostView as EmbeddedViewRef<unknown>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElem);
 
     return dialogRef;

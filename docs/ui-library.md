@@ -47,7 +47,7 @@ Need a UI component?
 |---------|---------|---------|
 | `@infragistics/igniteui-angular` | ^21.1.0 | Primary UI component library (Grid, Navbar, Dialog, etc.) |
 | `@igniteui/material-icons-extended` | ^3.1.0 | Extended Material icon set for Ignite UI |
-| `@angular/animations` | ^21.2.0 | Required peer dependency for Infragistics animations |
+| `@angular/animations` | ^21.2.4 | Required peer dependency for Infragistics animations |
 
 ### Pending
 
