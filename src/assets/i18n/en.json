@@ -1,0 +1,49 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "loading": "Loading…",
+    "noResults": "No results",
+    "confirm": "Confirm",
+    "back": "Back"
+  },
+  "layout": {
+    "header": {
+      "title": "DI Frontend"
+    },
+    "footer": {
+      "copyright": "© {{year}} DI Frontend"
+    },
+    "sidenav": {
+      "blueprint": "Blueprint"
+    }
+  },
+  "blueprint": {
+    "title": "Blueprint – List",
+    "detail": {
+      "title": "Blueprint – Detail"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Description"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "404 – Page Not Found",
+      "message": "The requested page does not exist."
+    },
+    "accessDenied": {
+      "title": "Access Denied",
+      "message": "You do not have permission to view this page."
+    }
+  },
+  "language": {
+    "de": "Deutsch",
+    "en": "English"
+  }
+}
