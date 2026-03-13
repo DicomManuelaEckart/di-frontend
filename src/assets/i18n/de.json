@@ -27,10 +27,24 @@
     "detail": {
       "title": "Blueprint – Detail"
     },
+    "createEdit": {
+      "titleCreate": "Blueprint – Erstellen",
+      "titleEdit": "Blueprint – Bearbeiten"
+    },
     "fields": {
+      "articleId": "Artikel-ID",
       "name": "Name",
-      "description": "Beschreibung"
+      "description": "Beschreibung",
+      "isActive": "Aktiv"
     }
+  },
+  "validation": {
+    "required": "Dieses Feld ist erforderlich.",
+    "minLength": "Mindestens {{min}} Zeichen erforderlich.",
+    "maxLength": "Maximal {{max}} Zeichen erlaubt.",
+    "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "unique": "Dieser Wert existiert bereits.",
+    "notBlank": "Dieses Feld darf nicht leer sein."
   },
   "errors": {
     "notFound": {

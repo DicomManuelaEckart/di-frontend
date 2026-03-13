@@ -43,6 +43,11 @@ module.exports = defineConfig([
   {
     files: ['**/*.html'],
     extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
-    rules: {},
+    rules: {
+      // Policy: Only Reactive Forms allowed (ADR-10500).
+      // Template-driven forms (ngModel) are forbidden.
+      // Enforcement: Angular strict templates prevent ngModel usage
+      // without FormsModule, which must not be imported.
+    },
   },
 ]);

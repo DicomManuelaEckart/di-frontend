@@ -1,0 +1,82 @@
+<div class="blueprint-create-edit">
+  <h1>{{ titleKey() | translate }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Article ID -->
+    <igx-input-group type="border">
+      <label igxLabel for="articleId">{{ 'blueprint.fields.articleId' | translate }}</label>
+      <input igxInput id="articleId" formControlName="articleId" type="text" />
+      @if (showErrors('articleId')) {
+        @if (
+          form.controls.articleId.errors?.['required'] ||
+          form.controls.articleId.errors?.['notBlank']
+        ) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+        @if (form.controls.articleId.errors?.['uniqueName']) {
+          <igx-hint>{{ 'validation.unique' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Name -->
+    <igx-input-group type="border">
+      <label igxLabel for="name">{{ 'blueprint.fields.name' | translate }}</label>
+      <input igxInput id="name" formControlName="name" type="text" />
+      @if (showErrors('name')) {
+        @if (form.controls.name.errors?.['required'] || form.controls.name.errors?.['notBlank']) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+        @if (form.controls.name.errors?.['trimmedMinLength']) {
+          <igx-hint>{{
+            'validation.minLength'
+              | translate: { min: form.controls.name.errors?.['trimmedMinLength']?.requiredLength }
+          }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Description -->
+    <igx-input-group type="border">
+      <label igxLabel for="description">{{ 'blueprint.fields.description' | translate }}</label>
+      <textarea igxInput id="description" formControlName="description" rows="4"></textarea>
+      @if (showErrors('description')) {
+        @if (
+          form.controls.description.errors?.['required'] ||
+          form.controls.description.errors?.['notBlank']
+        ) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+        @if (form.controls.description.errors?.['trimmedMaxLength']) {
+          <igx-hint>{{
+            'validation.maxLength'
+              | translate
+                : { max: form.controls.description.errors?.['trimmedMaxLength']?.requiredLength }
+          }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Active (Checkbox) -->
+    <div class="blueprint-create-edit__checkbox">
+      <igx-checkbox formControlName="isActive" labelPosition="after">
+        {{ 'blueprint.fields.isActive' | translate }}
+      </igx-checkbox>
+    </div>
+
+    <!-- Form State (Signals) -->
+    @if (isPending()) {
+      <p class="blueprint-create-edit__status">{{ 'common.loading' | translate }}</p>
+    }
+
+    <!-- Actions -->
+    <div class="blueprint-create-edit__actions">
+      <button type="button" class="btn btn--secondary" (click)="onCancel()">
+        {{ 'common.cancel' | translate }}
+      </button>
+      <button type="submit" class="btn btn--primary" [disabled]="!isValid() || isPending()">
+        {{ 'common.save' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

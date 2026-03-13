@@ -1,0 +1,55 @@
+.blueprint-create-edit {
+  max-width: 600px;
+  padding: var(--spacing-lg, 1.5rem);
+
+  h1 {
+    margin-bottom: var(--spacing-lg, 1.5rem);
+  }
+
+  igx-input-group {
+    margin-bottom: var(--spacing-md, 1rem);
+    width: 100%;
+  }
+
+  &__checkbox {
+    margin-bottom: var(--spacing-lg, 1.5rem);
+  }
+
+  &__status {
+    color: var(--color-text-secondary, #666);
+    font-style: italic;
+    margin-bottom: var(--spacing-md, 1rem);
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--spacing-md, 1rem);
+    justify-content: flex-end;
+    padding-top: var(--spacing-lg, 1.5rem);
+    border-top: 1px solid var(--color-border, #e0e0e0);
+  }
+}
+
+.btn {
+  padding: var(--spacing-sm, 0.5rem) var(--spacing-lg, 1.5rem);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius, 4px);
+  cursor: pointer;
+  font-size: 1rem;
+
+  &--primary {
+    background-color: var(--color-primary, #1976d2);
+    color: var(--color-on-primary, #fff);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    border-color: var(--color-border, #ccc);
+    color: var(--color-text, #333);
+  }
+}
