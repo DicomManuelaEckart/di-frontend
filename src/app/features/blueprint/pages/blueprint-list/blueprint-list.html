@@ -1,4 +1,18 @@
 <div class="blueprint-list">
   <h1>Blueprint Articles</h1>
-  <p>This is the reference feature list page.</p>
+
+  @if (loading()) {
+    <p>Loading…</p>
+  } @else {
+    <p>{{ filteredCount() }} of {{ articleCount() }} articles</p>
+
+    @for (article of filteredArticles(); track article.articleId) {
+      <div class="blueprint-list__item">
+        <strong>{{ article.name }}</strong>
+        <span>{{ article.description }}</span>
+      </div>
+    } @empty {
+      <p>No articles found.</p>
+    }
+  }
 </div>
