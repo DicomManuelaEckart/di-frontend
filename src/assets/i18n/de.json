@@ -1,0 +1,49 @@
+{
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "add": "Hinzufügen",
+    "search": "Suchen",
+    "loading": "Laden…",
+    "noResults": "Keine Ergebnisse",
+    "confirm": "Bestätigen",
+    "back": "Zurück"
+  },
+  "layout": {
+    "header": {
+      "title": "DI Frontend"
+    },
+    "footer": {
+      "copyright": "© {{year}} DI Frontend"
+    },
+    "sidenav": {
+      "blueprint": "Blueprint"
+    }
+  },
+  "blueprint": {
+    "title": "Blueprint – Liste",
+    "detail": {
+      "title": "Blueprint – Detail"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Beschreibung"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "404 – Seite nicht gefunden",
+      "message": "Die angeforderte Seite existiert nicht."
+    },
+    "accessDenied": {
+      "title": "Zugriff verweigert",
+      "message": "Sie haben keine Berechtigung, diese Seite zu sehen."
+    }
+  },
+  "language": {
+    "de": "Deutsch",
+    "en": "English"
+  }
+}
