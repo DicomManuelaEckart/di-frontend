@@ -26,9 +26,8 @@ export class AuthService {
    * In the stub implementation this always returns `true`.
    * Once Entra ID is integrated, this will check JWT claims.
    */
-  hasPermission(permission: string): boolean {
+  hasPermission(_permission: string): boolean {
     // Stub: grant all permissions during development
-    void permission;
     return true;
   }
 

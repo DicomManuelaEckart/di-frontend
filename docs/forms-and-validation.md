@@ -6,7 +6,10 @@
 
 **Only Angular Reactive Forms are allowed.** Template-driven forms (`ngModel`, `[(ngModel)]`) are forbidden.
 
-This is enforced by the ESLint rule `@angular-eslint/template/no-ngmodel-with-form-group` in `eslint.config.js`.
+This is enforced by:
+1. Angular strict template checking — `ngModel` requires `FormsModule`, which must not be imported
+2. The ESLint policy comment in `eslint.config.js` documents this rule for developers and agents
+3. Standalone components only import `ReactiveFormsModule`, never `FormsModule`
 
 ```typescript
 // ✅ CORRECT: Reactive Forms with typed FormBuilder
