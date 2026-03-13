@@ -1,4 +1,8 @@
 <div class="blueprint-detail">
-  <h1>Blueprint Article Detail</h1>
+  <h1>{{ articleName() }}</h1>
   <p>Article ID: {{ id() }}</p>
+
+  @if (article(); as article) {
+    <p>{{ article.description }}</p>
+  }
 </div>
