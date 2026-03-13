@@ -1,14 +1,13 @@
-<nav class="sidenav" aria-label="Main navigation">
-  <ul class="sidenav__list">
+<igx-nav-drawer [pin]="true" [pinThreshold]="0">
+  <ng-template igxDrawer>
     @for (item of navItems; track item.route) {
-      <li class="sidenav__item">
-        <a class="sidenav__link" [routerLink]="item.route" routerLinkActive="sidenav__link--active">
-          @if (item.icon) {
-            <span class="sidenav__icon">{{ item.icon }}</span>
-          }
-          {{ item.label }}
-        </a>
-      </li>
+      <igx-nav-drawer-item
+        [routerLink]="item.route"
+        routerLinkActive="igx-nav-drawer__item--active"
+      >
+        <igx-icon>{{ item.icon }}</igx-icon>
+        <span>{{ item.label }}</span>
+      </igx-nav-drawer-item>
     }
-  </ul>
-</nav>
+  </ng-template>
+</igx-nav-drawer>

@@ -1,0 +1,8 @@
+<igx-dialog #dialog [isOpen]="true" [closeOnOutsideSelect]="false">
+  <h2>{{ title }}</h2>
+  <p>{{ message }}</p>
+  <div igxDialogActions>
+    <button type="button" (click)="onCancel()">Cancel</button>
+    <button type="button" (click)="onConfirm()">OK</button>
+  </div>
+</igx-dialog>

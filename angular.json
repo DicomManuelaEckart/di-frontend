@@ -36,15 +36,18 @@
                 "output": "/assets/i18n"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": [
+              "node_modules/@infragistics/igniteui-angular/styles/igniteui-fluent-light.css",
+              "src/styles.scss"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "3MB"
                 },
                 {
                   "type": "anyComponentStyle",

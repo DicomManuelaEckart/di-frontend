@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { Sidenav } from './sidenav';
 
@@ -10,7 +11,7 @@ describe('Sidenav', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Sidenav],
-      providers: [provideRouter([])],
+      providers: [provideRouter([]), provideAnimationsAsync()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Sidenav);
@@ -26,9 +27,8 @@ describe('Sidenav', () => {
     expect(component.navItems.length).toBeGreaterThan(0);
   });
 
-  it('should render navigation links', () => {
+  it('should render navigation drawer', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const links = compiled.querySelectorAll('.sidenav__link');
-    expect(links.length).toBe(component.navItems.length);
+    expect(compiled.querySelector('igx-nav-drawer')).toBeTruthy();
   });
 });

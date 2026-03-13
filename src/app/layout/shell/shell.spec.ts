@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { Shell } from './shell';
 
@@ -10,7 +11,7 @@ describe('Shell', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Shell],
-      providers: [provideRouter([])],
+      providers: [provideRouter([]), provideAnimationsAsync()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Shell);
