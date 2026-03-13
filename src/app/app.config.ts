@@ -1,17 +1,20 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideTranslateService, provideMissingTranslationHandler } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { routes } from './app.routes';
 import { AppMissingTranslationHandler } from './core/services/missing-translation-handler';
+import { API_BASE_URL } from './core/tokens/api-base-url.token';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([])),
+    { provide: API_BASE_URL, useValue: environment.apiUrl },
     provideTranslateService({
       defaultLanguage: 'de',
       fallbackLang: 'de',
