@@ -10,9 +10,7 @@ export const routes: Routes = [
       {
         path: 'blueprint',
         loadChildren: () =>
-          import('./features/blueprint/blueprint.routes').then(
-            (m) => m.blueprintRoutes
-          ),
+          import('./features/blueprint/blueprint.routes').then((m) => m.blueprintRoutes),
       },
       {
         path: '',
@@ -24,17 +22,12 @@ export const routes: Routes = [
   {
     path: 'access-denied',
     loadComponent: () =>
-      import('./features/errors/access-denied/access-denied').then(
-        (m) => m.AccessDenied
-      ),
+      import('./features/errors/access-denied/access-denied').then((m) => m.AccessDenied),
     title: 'Access Denied',
   },
   {
     path: '**',
-    loadComponent: () =>
-      import('./features/errors/not-found/not-found').then(
-        (m) => m.NotFound
-      ),
+    loadComponent: () => import('./features/errors/not-found/not-found').then((m) => m.NotFound),
     title: 'Page Not Found',
   },
 ];
