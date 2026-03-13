@@ -1,0 +1,25 @@
+<igx-dialog #dialog [closeOnOutsideSelect]="false" [closeOnEscape]="true">
+  <igx-dialog-title>
+    <igx-icon family="material">warning</igx-icon>
+    {{ title() }}
+  </igx-dialog-title>
+
+  <p>{{ message() }}</p>
+
+  <div igxDialogActions>
+    <button
+      type="button"
+      class="confirm-dialog__btn confirm-dialog__btn--cancel"
+      (click)="onCancel(); dialog.close()"
+    >
+      {{ cancelLabel() }}
+    </button>
+    <button
+      type="button"
+      class="confirm-dialog__btn confirm-dialog__btn--confirm"
+      (click)="onConfirm(); dialog.close()"
+    >
+      {{ confirmLabel() }}
+    </button>
+  </div>
+</igx-dialog>

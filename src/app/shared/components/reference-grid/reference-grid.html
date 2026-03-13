@@ -1,0 +1,21 @@
+<igx-grid
+  [data]="data()"
+  [primaryKey]="primaryKey()"
+  [autoGenerate]="false"
+  [allowFiltering]="true"
+  width="100%"
+  (rowSelectionChanging)="rowSelected.emit($event)"
+>
+  @for (col of columns(); track col.field) {
+    <igx-column
+      [field]="col.field"
+      [header]="col.header"
+      [sortable]="col.sortable ?? true"
+      [filterable]="col.filterable ?? true"
+      [width]="col.width ?? ''"
+      [dataType]="col.dataType ?? 'string'"
+    ></igx-column>
+  }
+
+  <igx-paginator [perPage]="pageSize()"></igx-paginator>
+</igx-grid>
