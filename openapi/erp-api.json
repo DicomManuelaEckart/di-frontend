@@ -97,6 +97,136 @@
         }
       }
     },
+    "/api/admin/v1/tenants": {
+      "post": {
+        "tags": [
+          "Tenants"
+        ],
+        "summary": "Provision a new Tenant.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTenantRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTenantRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTenantRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTenantResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTenantResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTenantResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/me/locale": {
       "get": {
         "tags": [
@@ -1548,136 +1678,6 @@
         }
       }
     },
-    "/api/admin/v1/tenants": {
-      "post": {
-        "tags": [
-          "Tenants"
-        ],
-        "summary": "Provision a new Tenant.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTenantRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTenantRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTenantRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateTenantResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateTenantResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateTenantResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/v1/tenant-locale": {
       "get": {
         "tags": [
@@ -2486,7 +2486,7 @@
         "tags": [
           "NumberSequences"
         ],
-        "summary": "List NumberSequences for the current tenant.",
+        "summary": "List NumberSequences for the current company.",
         "parameters": [
           {
             "name": "documentType",
@@ -5632,7 +5632,6 @@
       "ExchangeRateListItemResponse": {
         "required": [
           "exchangeRateId",
-          "tenantId",
           "fromCurrencyCode",
           "toCurrencyCode",
           "rate",
@@ -5643,10 +5642,6 @@
         "type": "object",
         "properties": {
           "exchangeRateId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "tenantId": {
             "type": "string",
             "format": "uuid"
           },
@@ -5823,7 +5818,7 @@
       "NumberSequenceListItemResponse": {
         "required": [
           "numberSequenceId",
-          "tenantId",
+          "companyId",
           "documentType",
           "numberPattern",
           "prefix",
@@ -5838,7 +5833,7 @@
             "type": "string",
             "format": "uuid"
           },
-          "tenantId": {
+          "companyId": {
             "type": "string",
             "format": "uuid"
           },
@@ -6081,7 +6076,6 @@
       "ResolveExchangeRateResponse": {
         "required": [
           "exchangeRateId",
-          "tenantId",
           "fromCurrencyCode",
           "toCurrencyCode",
           "rate",
@@ -6092,10 +6086,6 @@
         "type": "object",
         "properties": {
           "exchangeRateId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "tenantId": {
             "type": "string",
             "format": "uuid"
           },
@@ -6132,7 +6122,6 @@
       "ResolveTaxRateResponse": {
         "required": [
           "taxRateId",
-          "tenantId",
           "name",
           "percentage",
           "taxType",
@@ -6146,10 +6135,6 @@
         "type": "object",
         "properties": {
           "taxRateId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "tenantId": {
             "type": "string",
             "format": "uuid"
           },
@@ -6333,7 +6318,6 @@
       "SystemSettingListItemResponse": {
         "required": [
           "systemSettingId",
-          "tenantId",
           "settingKey",
           "settingValue",
           "effectiveValue",
@@ -6349,10 +6333,6 @@
         "type": "object",
         "properties": {
           "systemSettingId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "tenantId": {
             "type": "string",
             "format": "uuid"
           },
@@ -6419,7 +6399,6 @@
       "TaxRateListItemResponse": {
         "required": [
           "taxRateId",
-          "tenantId",
           "name",
           "percentage",
           "taxType",
@@ -6433,10 +6412,6 @@
         "type": "object",
         "properties": {
           "taxRateId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "tenantId": {
             "type": "string",
             "format": "uuid"
           },
@@ -6516,7 +6491,6 @@
       "TranslationDto": {
         "required": [
           "id",
-          "tenantId",
           "key",
           "module",
           "values",
@@ -6526,10 +6500,6 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "tenantId": {
             "type": "string",
             "format": "uuid"
           },
