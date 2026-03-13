@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+@use 'mixins' as *;
+
+/* ---------- Display ---------- */
+.u-flex {
+  display: flex;
+}
+
+.u-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ---------- Spacing ---------- */
+.u-mt-sm {
+  margin-top: var(--spacing-sm);
+}
+
+.u-mt-md {
+  margin-top: var(--spacing-md);
+}
+
+.u-mt-lg {
+  margin-top: var(--spacing-lg);
+}
+
+.u-mb-sm {
+  margin-bottom: var(--spacing-sm);
+}
+
+.u-mb-md {
+  margin-bottom: var(--spacing-md);
+}
+
+.u-mb-lg {
+  margin-bottom: var(--spacing-lg);
+}
+
+.u-p-sm {
+  padding: var(--spacing-sm);
+}
+
+.u-p-md {
+  padding: var(--spacing-md);
+}
+
+.u-p-lg {
+  padding: var(--spacing-lg);
+}
+
+/* ---------- Text ---------- */
+.u-text-center {
+  text-align: center;
+}
+
+.u-text-truncate {
+  @include text-truncate;
+}
+
+/* ---------- Accessibility ---------- */
+.u-visually-hidden {
+  @include visually-hidden;
+}

@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Main Style Entry Point
+   Imports all partials in correct order.
+   ========================================================================== */
+
+@use 'variables' as *;
+@use 'reset';
+@use 'typography';
+@use 'accessibility';
+@use 'utilities';
+
+/* ---------- Theming – CSS Custom Properties ---------- */
+
+:root {
+  /* Colors */
+  --color-primary: #{$color-primary};
+  --color-on-primary: #{$color-on-primary};
+  --color-secondary: #{$color-secondary};
+  --color-on-secondary: #{$color-on-secondary};
+  --color-success: #{$color-success};
+  --color-warning: #{$color-warning};
+  --color-error: #{$color-error};
+
+  --color-background: #{$color-background-light};
+  --color-surface: #{$color-surface-light};
+  --color-text: #{$color-text-light};
+  --color-text-secondary: #{$color-text-secondary-light};
+  --color-border: #{$color-border-light};
+  --color-hover: #{$color-hover-light};
+  --color-active: #{$color-active-light};
+
+  /* Spacing */
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-xl: #{$spacing-xl};
+
+  /* Typography */
+  --font-family-base: #{$font-family-base};
+  --font-family-mono: #{$font-family-mono};
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-body: #{$font-size-body};
+  --font-size-md: #{$font-size-md};
+  --font-size-lg: #{$font-size-lg};
+  --font-size-h1: #{$font-size-h1};
+  --font-size-h2: #{$font-size-h2};
+  --font-size-h3: #{$font-size-h3};
+  --font-weight-normal: #{$font-weight-normal};
+  --font-weight-medium: #{$font-weight-medium};
+  --font-weight-bold: #{$font-weight-bold};
+  --line-height-base: #{$line-height-base};
+  --line-height-heading: #{$line-height-heading};
+
+  /* Border Radius */
+  --border-radius-sm: #{$border-radius-sm};
+  --border-radius-md: #{$border-radius-md};
+  --border-radius-lg: #{$border-radius-lg};
+}
+
+/* ---------- Dark Theme ---------- */
+
+[data-theme='dark'] {
+  --color-background: #{$color-background-dark};
+  --color-surface: #{$color-surface-dark};
+  --color-text: #{$color-text-dark};
+  --color-text-secondary: #{$color-text-secondary-dark};
+  --color-border: #{$color-border-dark};
+  --color-hover: #{$color-hover-dark};
+  --color-active: #{$color-active-dark};
+}
+
+/* ---------- Base Body Styles ---------- */
+
+body {
+  background-color: var(--color-background);
+}

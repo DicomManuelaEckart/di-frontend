@@ -38,7 +38,7 @@
             ],
             "styles": [
               "node_modules/@infragistics/igniteui-angular/styles/igniteui-angular.css",
-              "src/styles.scss"
+              "src/styles/styles.scss"
             ]
           },
           "configurations": {
