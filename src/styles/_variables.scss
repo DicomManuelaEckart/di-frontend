@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Design Tokens – SCSS Variables (ADR-10100)
+   ========================================================================== */
+
+/* ---------- Color Tokens ---------- */
+$color-primary: #1976d2;
+$color-on-primary: #fff;
+$color-secondary: #6c757d;
+$color-on-secondary: #fff;
+$color-success: #2e7d32;
+$color-warning: #ed6c02;
+$color-error: #d32f2f;
+
+/* Light Theme */
+$color-background-light: #fff;
+$color-surface-light: #fafafa;
+$color-text-light: #333;
+$color-text-secondary-light: #666;
+$color-border-light: #e0e0e0;
+$color-hover-light: #e8e8e8;
+$color-active-light: #e3f2fd;
+
+/* Dark Theme */
+$color-background-dark: #121212;
+$color-surface-dark: #1e1e1e;
+$color-text-dark: #e0e0e0;
+$color-text-secondary-dark: #aaa;
+$color-border-dark: #333;
+$color-hover-dark: #2c2c2c;
+$color-active-dark: #0d47a1;
+
+/* ---------- Spacing Tokens ---------- */
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+/* ---------- Typography Tokens ---------- */
+$font-family-base:
+  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-body: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-h1: 1.5rem;
+$font-size-h2: 1.25rem;
+$font-size-h3: 1.125rem;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$line-height-base: 1.5;
+$line-height-heading: 1.2;
+
+/* ---------- Border Radius ---------- */
+$border-radius-sm: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 0.75rem;
+
+/* ---------- Transition ---------- */
+$transition-fast: 150ms ease-in-out;
+$transition-normal: 250ms ease-in-out;
+
+/* ---------- Focus ---------- */
+$focus-outline-width: 2px;
+$focus-outline-offset: 2px;
+$focus-outline-color: $color-primary;
