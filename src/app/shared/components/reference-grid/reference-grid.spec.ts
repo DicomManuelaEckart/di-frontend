@@ -6,9 +6,15 @@ import { ReferenceGrid } from './reference-grid';
 // jsdom does not provide ResizeObserver; supply a minimal stub for Infragistics grid
 if (typeof globalThis.ResizeObserver === 'undefined') {
   globalThis.ResizeObserver = class ResizeObserver {
-    observe(): void {}
-    unobserve(): void {}
-    disconnect(): void {}
+    observe(): void {
+      /* noop – test stub */
+    }
+    unobserve(): void {
+      /* noop – test stub */
+    }
+    disconnect(): void {
+      /* noop – test stub */
+    }
   } as unknown as typeof globalThis.ResizeObserver;
 }
 
