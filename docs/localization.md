@@ -1,6 +1,5 @@
 # Localization / i18n Baseline
 
-> **ADR Reference:** [ADR-02100 – Test Projects Naming Structure](../governance-base/adr/02-testing/ADR-02100-test-projects-naming-structure.md)
 > **Story:** F0100-S004
 
 ## Library & Configuration
