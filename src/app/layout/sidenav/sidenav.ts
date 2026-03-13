@@ -15,7 +15,5 @@ export interface NavItem {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Sidenav {
-  readonly navItems: NavItem[] = [
-    { label: 'Blueprint', route: '/blueprint', icon: '📋' },
-  ];
+  readonly navItems: NavItem[] = [{ label: 'Blueprint', route: '/blueprint', icon: '📋' }];
 }

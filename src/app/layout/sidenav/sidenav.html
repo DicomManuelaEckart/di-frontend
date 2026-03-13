@@ -2,11 +2,7 @@
   <ul class="sidenav__list">
     @for (item of navItems; track item.route) {
       <li class="sidenav__item">
-        <a
-          class="sidenav__link"
-          [routerLink]="item.route"
-          routerLinkActive="sidenav__link--active"
-        >
+        <a class="sidenav__link" [routerLink]="item.route" routerLinkActive="sidenav__link--active">
           @if (item.icon) {
             <span class="sidenav__icon">{{ item.icon }}</span>
           }

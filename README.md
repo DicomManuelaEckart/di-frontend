@@ -12,8 +12,37 @@ Angular SPA frontend for the DI ERP system.
 
 ## Prerequisites
 
-- Node.js >= 20
+- Node.js >= 22 (see `.nvmrc`)
 - npm >= 10
+
+```bash
+# Use the correct Node version (if using nvm)
+nvm use
+```
+
+## How to Build
+
+```bash
+npm run build
+```
+
+This runs `ng build` and produces a production bundle in `dist/di-frontend/`.
+
+## How to Test
+
+```bash
+npm test
+```
+
+This runs `ng test` using Vitest. Test files are placed next to source files (`*.spec.ts`).
+
+## How to Run
+
+```bash
+npm start
+```
+
+This starts the Angular development server at `http://localhost:4200`.
 
 ## Getting Started
 
