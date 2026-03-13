@@ -14,17 +14,12 @@ export class BlueprintCustomerService {
   getAll(params?: PaginationParams): Observable<PagedResponse<BlueprintCustomerListItem>> {
     let httpParams = new HttpParams();
 
-    if (params?.page != null) {
-      httpParams = httpParams.set('page', params.page);
-    }
-    if (params?.pageSize != null) {
-      httpParams = httpParams.set('pageSize', params.pageSize);
-    }
-    if (params?.sortBy != null) {
-      httpParams = httpParams.set('sortBy', params.sortBy);
-    }
-    if (params?.sortOrder != null) {
-      httpParams = httpParams.set('sortOrder', params.sortOrder);
+    if (params) {
+      for (const [key, value] of Object.entries(params)) {
+        if (value != null) {
+          httpParams = httpParams.set(key, value);
+        }
+      }
     }
 
     return this.http.get<PagedResponse<BlueprintCustomerListItem>>(this.baseUrl, {
