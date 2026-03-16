@@ -1465,6 +1465,368 @@
         }
       }
     },
+    "/api/v1/articles/{id}/hierarchy": {
+      "post": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Create a new article hierarchy relationship.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateArticleHierarchyRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateArticleHierarchyRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateArticleHierarchyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleHierarchyResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleHierarchyResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleHierarchyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Get all hierarchy relationships for an article.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArticleHierarchyResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArticleHierarchyResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArticleHierarchyResponse"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/articles/{id}/hierarchy/{hierarchyId}": {
+      "delete": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Remove an article hierarchy relationship.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "hierarchyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/articles": {
       "post": {
         "tags": [
@@ -1629,6 +1991,147 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ArticleResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/articles/{id}/properties": {
+      "put": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Update article properties and trade flags.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateArticlePropertiesRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateArticlePropertiesRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateArticlePropertiesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -5772,6 +6275,66 @@
           }
         }
       },
+      "ArticleHierarchyResponse": {
+        "required": [
+          "hierarchyId",
+          "parentArticleId",
+          "childArticleId",
+          "containedQuantity",
+          "isMainUnit",
+          "isSubUnit",
+          "isOrderUnit",
+          "isDeliveryUnit",
+          "isConsumerUnit",
+          "isSmallestUnit",
+          "createdAt"
+        ],
+        "type": "object",
+        "properties": {
+          "hierarchyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parentArticleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "childArticleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "containedQuantity": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "isMainUnit": {
+            "type": "boolean"
+          },
+          "isSubUnit": {
+            "type": "boolean"
+          },
+          "isOrderUnit": {
+            "type": "boolean"
+          },
+          "isDeliveryUnit": {
+            "type": "boolean"
+          },
+          "isConsumerUnit": {
+            "type": "boolean"
+          },
+          "isSmallestUnit": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "ArticleResponse": {
         "required": [
           "articleId",
@@ -5788,7 +6351,23 @@
           "productGroupId",
           "taxRateId",
           "articleStatus",
-          "createdAt"
+          "createdAt",
+          "isEligibleForBonus",
+          "isReturnable",
+          "conditionBlock",
+          "neverOutOfStock",
+          "availableFrom",
+          "earliestSaleDate",
+          "colorCode",
+          "colorName",
+          "sizeCode",
+          "sizeName",
+          "seasonCode",
+          "countryOfOrigin",
+          "minimumOrderQuantity",
+          "lotFactor",
+          "successorArticleId",
+          "predecessorArticleId"
         ],
         "type": "object",
         "properties": {
@@ -5874,6 +6453,100 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "isEligibleForBonus": {
+            "type": "boolean"
+          },
+          "isReturnable": {
+            "type": "boolean"
+          },
+          "conditionBlock": {
+            "type": "boolean"
+          },
+          "neverOutOfStock": {
+            "type": "boolean"
+          },
+          "availableFrom": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "earliestSaleDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "colorCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "colorName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sizeCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sizeName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "seasonCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "countryOfOrigin": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "minimumOrderQuantity": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "lotFactor": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "successorArticleId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "predecessorArticleId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
           },
           "netWeight": {
             "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
@@ -6329,6 +7002,51 @@
           },
           "identifierType": {
             "$ref": "#/components/schemas/SubjectIdentifierType"
+          }
+        }
+      },
+      "CreateArticleHierarchyRequest": {
+        "required": [
+          "childArticleId",
+          "containedQuantity",
+          "isMainUnit",
+          "isSubUnit",
+          "isOrderUnit",
+          "isDeliveryUnit",
+          "isConsumerUnit",
+          "isSmallestUnit"
+        ],
+        "type": "object",
+        "properties": {
+          "childArticleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "containedQuantity": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "isMainUnit": {
+            "type": "boolean"
+          },
+          "isSubUnit": {
+            "type": "boolean"
+          },
+          "isOrderUnit": {
+            "type": "boolean"
+          },
+          "isDeliveryUnit": {
+            "type": "boolean"
+          },
+          "isConsumerUnit": {
+            "type": "boolean"
+          },
+          "isSmallestUnit": {
+            "type": "boolean"
           }
         }
       },
@@ -7974,6 +8692,123 @@
               "string"
             ],
             "format": "int32"
+          }
+        }
+      },
+      "UpdateArticlePropertiesRequest": {
+        "required": [
+          "isEligibleForBonus",
+          "isReturnable",
+          "conditionBlock",
+          "neverOutOfStock",
+          "availableFrom",
+          "earliestSaleDate",
+          "colorCode",
+          "colorName",
+          "sizeCode",
+          "sizeName",
+          "seasonCode",
+          "countryOfOrigin",
+          "minimumOrderQuantity",
+          "lotFactor",
+          "successorArticleId",
+          "predecessorArticleId"
+        ],
+        "type": "object",
+        "properties": {
+          "isEligibleForBonus": {
+            "type": "boolean"
+          },
+          "isReturnable": {
+            "type": "boolean"
+          },
+          "conditionBlock": {
+            "type": "boolean"
+          },
+          "neverOutOfStock": {
+            "type": "boolean"
+          },
+          "availableFrom": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "earliestSaleDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "colorCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "colorName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sizeCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sizeName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "seasonCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "countryOfOrigin": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "minimumOrderQuantity": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "lotFactor": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "successorArticleId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "predecessorArticleId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
           }
         }
       },
