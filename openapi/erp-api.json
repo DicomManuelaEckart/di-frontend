@@ -821,6 +821,237 @@
         }
       }
     },
+    "/api/v1/articles": {
+      "post": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Create a new Article.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateArticleRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateArticleRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateArticleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/articles/{id}": {
+      "get": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Get an Article by its identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/admin/seed/demo": {
       "post": {
         "tags": [
@@ -4756,6 +4987,111 @@
           }
         }
       },
+      "ArticleResponse": {
+        "required": [
+          "articleId",
+          "articleNr",
+          "gtin",
+          "articleName",
+          "articleLongText",
+          "articleType",
+          "supplierArticleNr",
+          "buyerArticleNr",
+          "brandName",
+          "modelDescription",
+          "receiptText",
+          "productGroupId",
+          "taxRateId",
+          "articleStatus",
+          "createdAt"
+        ],
+        "type": "object",
+        "properties": {
+          "articleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "articleNr": {
+            "type": "string"
+          },
+          "gtin": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "articleName": {
+            "type": "string"
+          },
+          "articleLongText": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "articleType": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "supplierArticleNr": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "buyerArticleNr": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "brandName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "modelDescription": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "receiptText": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "productGroupId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "taxRateId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "articleStatus": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "AuditEntryDto": {
         "required": [
           "id",
@@ -5124,6 +5460,98 @@
           },
           "identifierType": {
             "$ref": "#/components/schemas/SubjectIdentifierType"
+          }
+        }
+      },
+      "CreateArticleRequest": {
+        "required": [
+          "articleNr",
+          "gtin",
+          "articleName",
+          "articleLongText",
+          "articleType",
+          "supplierArticleNr",
+          "buyerArticleNr",
+          "brandName",
+          "modelDescription",
+          "receiptText",
+          "productGroupId",
+          "taxRateId"
+        ],
+        "type": "object",
+        "properties": {
+          "articleNr": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "gtin": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "articleName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "articleLongText": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "articleType": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "supplierArticleNr": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "buyerArticleNr": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "brandName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "modelDescription": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "receiptText": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "productGroupId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "taxRateId": {
+            "type": "string",
+            "format": "uuid"
           }
         }
       },
