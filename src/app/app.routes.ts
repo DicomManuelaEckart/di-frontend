@@ -25,6 +25,11 @@ export const routes: Routes = [
           import('./features/tax-rates/tax-rates.routes').then((m) => m.taxRatesRoutes),
       },
       {
+        path: 'currencies',
+        loadChildren: () =>
+          import('./features/currencies/currencies.routes').then((m) => m.currenciesRoutes),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'blueprint',
