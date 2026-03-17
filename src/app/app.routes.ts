@@ -13,6 +13,13 @@ export const routes: Routes = [
           import('./features/blueprint/blueprint.routes').then((m) => m.blueprintRoutes),
       },
       {
+        path: 'number-sequences',
+        loadChildren: () =>
+          import('./features/number-sequences/number-sequences.routes').then(
+            (m) => m.numberSequencesRoutes,
+          ),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'blueprint',

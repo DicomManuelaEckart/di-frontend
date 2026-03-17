@@ -1,0 +1,79 @@
+<div class="number-sequence-create-edit">
+  <h1>{{ titleKey() | translate }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Document Type -->
+    <igx-input-group type="border">
+      <label igxLabel for="documentType">{{
+        'numberSequences.fields.documentType' | translate
+      }}</label>
+      <input igxInput id="documentType" formControlName="documentType" type="number" />
+      @if (showErrors('documentType')) {
+        @if (form.controls.documentType.errors?.['required']) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+        @if (form.controls.documentType.errors?.['min']) {
+          <igx-hint>{{ 'numberSequences.validation.minZero' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Number Pattern -->
+    <igx-input-group type="border">
+      <label igxLabel for="numberPattern">{{
+        'numberSequences.fields.numberPattern' | translate
+      }}</label>
+      <input igxInput id="numberPattern" formControlName="numberPattern" type="text" />
+      @if (showErrors('numberPattern')) {
+        @if (
+          form.controls.numberPattern.errors?.['required'] ||
+          form.controls.numberPattern.errors?.['notBlank']
+        ) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Prefix -->
+    <igx-input-group type="border">
+      <label igxLabel for="prefix">{{ 'numberSequences.fields.prefix' | translate }}</label>
+      <input igxInput id="prefix" formControlName="prefix" type="text" />
+    </igx-input-group>
+
+    <!-- Start Value -->
+    <igx-input-group type="border">
+      <label igxLabel for="startValue">{{ 'numberSequences.fields.startValue' | translate }}</label>
+      <input igxInput id="startValue" formControlName="startValue" type="number" />
+      @if (showErrors('startValue')) {
+        @if (form.controls.startValue.errors?.['required']) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+        @if (form.controls.startValue.errors?.['min']) {
+          <igx-hint>{{ 'numberSequences.validation.minZero' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Yearly Reset (Checkbox) -->
+    <div class="number-sequence-create-edit__checkbox">
+      <igx-checkbox formControlName="yearlyReset" labelPosition="after">
+        {{ 'numberSequences.fields.yearlyReset' | translate }}
+      </igx-checkbox>
+    </div>
+
+    <!-- Form State (Signals) -->
+    @if (isPending()) {
+      <p class="number-sequence-create-edit__status">{{ 'common.loading' | translate }}</p>
+    }
+
+    <!-- Actions -->
+    <div class="number-sequence-create-edit__actions">
+      <button type="button" class="btn btn--secondary" (click)="onCancel()">
+        {{ 'common.cancel' | translate }}
+      </button>
+      <button type="submit" class="btn btn--primary" [disabled]="!isValid() || isPending()">
+        {{ 'common.save' | translate }}
+      </button>
+    </div>
+  </form>
+</div>
