@@ -1,0 +1,108 @@
+<div class="tax-rates-list">
+  <div class="tax-rates-list__header">
+    <h1>{{ 'taxRates.title' | translate }}</h1>
+    <button type="button" class="btn btn--primary" (click)="onCreate()">
+      {{ 'common.add' | translate }}
+    </button>
+  </div>
+
+  @if (loading()) {
+    <p>{{ 'common.loading' | translate }}</p>
+  } @else {
+    <igx-grid
+      [data]="items()"
+      primaryKey="taxRateId"
+      [autoGenerate]="false"
+      [allowFiltering]="true"
+      width="100%"
+    >
+      <igx-column
+        field="name"
+        [header]="'taxRates.fields.name' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="180px"
+      ></igx-column>
+      <igx-column
+        field="percentage"
+        [header]="'taxRates.fields.percentage' | translate"
+        [sortable]="true"
+        dataType="number"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="taxType"
+        [header]="'taxRates.fields.taxType' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        dataType="number"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="countryCode"
+        [header]="'taxRates.fields.countryCode' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="130px"
+      ></igx-column>
+      <igx-column
+        field="regionCode"
+        [header]="'taxRates.fields.regionCode' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="130px"
+      ></igx-column>
+      <igx-column
+        field="validFrom"
+        [header]="'taxRates.fields.validFrom' | translate"
+        [sortable]="true"
+        dataType="date"
+        width="130px"
+      ></igx-column>
+      <igx-column
+        field="validTo"
+        [header]="'taxRates.fields.validTo' | translate"
+        [sortable]="true"
+        dataType="date"
+        width="130px"
+      ></igx-column>
+      <igx-column
+        field="ediTaxCode"
+        [header]="'taxRates.fields.ediTaxCode' | translate"
+        [sortable]="true"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="isActive"
+        [header]="'taxRates.fields.isActive' | translate"
+        [sortable]="true"
+        dataType="boolean"
+        width="100px"
+      ></igx-column>
+
+      <igx-column
+        [header]="'taxRates.actions.columnHeader' | translate"
+        [sortable]="false"
+        [filterable]="false"
+        width="130px"
+      >
+        <ng-template igxCell let-cell="cell">
+          @if (cell.row.data.isActive) {
+            <button
+              type="button"
+              class="tax-rates-list__deactivate-btn"
+              [disabled]="deactivatingId() === cell.row.data.taxRateId"
+              (click)="onDeactivate(cell.row.data)"
+              [title]="'taxRates.actions.deactivate' | translate"
+            >
+              <igx-icon family="material">block</igx-icon>
+              <span>{{ 'taxRates.actions.deactivate' | translate }}</span>
+            </button>
+          }
+        </ng-template>
+      </igx-column>
+
+      <igx-paginator [perPage]="20"></igx-paginator>
+    </igx-grid>
+  }
+</div>

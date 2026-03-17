@@ -18,5 +18,6 @@ export class Sidenav {
   readonly navItems: NavItem[] = [
     { label: 'Blueprint', route: '/blueprint', icon: '📋' },
     { label: 'Number Sequences', route: '/number-sequences', icon: '🔢' },
+    { label: 'Tax Rates', route: '/tax-rates', icon: '💰' },
   ];
 }

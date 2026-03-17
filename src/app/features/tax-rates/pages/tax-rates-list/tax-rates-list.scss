@@ -1,0 +1,49 @@
+.tax-rates-list {
+  padding: var(--spacing-lg, 1.5rem);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg, 1.5rem);
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  &__deactivate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs, 0.25rem);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs, 0.25rem) var(--spacing-sm, 0.5rem);
+    border-radius: var(--border-radius-sm, 4px);
+    color: var(--color-warning, #f44336);
+    font-size: var(--font-size-sm, 0.875rem);
+
+    &:hover {
+      background-color: var(--color-hover, rgba(0, 0, 0, 0.04));
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.btn {
+  padding: var(--spacing-sm, 0.5rem) var(--spacing-lg, 1.5rem);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius, 4px);
+  cursor: pointer;
+  font-size: 1rem;
+
+  &--primary {
+    background-color: var(--color-primary, #1976d2);
+    color: var(--color-on-primary, #fff);
+  }
+}

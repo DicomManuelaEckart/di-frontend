@@ -20,6 +20,11 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'tax-rates',
+        loadChildren: () =>
+          import('./features/tax-rates/tax-rates.routes').then((m) => m.taxRatesRoutes),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'blueprint',
