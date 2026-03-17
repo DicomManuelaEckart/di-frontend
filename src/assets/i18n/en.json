@@ -19,7 +19,8 @@
       "copyright": "© {{year}} DI Frontend"
     },
     "sidenav": {
-      "blueprint": "Blueprint"
+      "blueprint": "Blueprint",
+      "numberSequences": "Number Sequences"
     }
   },
   "blueprint": {
@@ -36,6 +37,30 @@
       "name": "Name",
       "description": "Description",
       "isActive": "Active"
+    }
+  },
+  "numberSequences": {
+    "title": "Number Sequences – List",
+    "createEdit": {
+      "titleCreate": "Number Sequence – Create",
+      "titleEdit": "Number Sequence – Edit"
+    },
+    "fields": {
+      "documentType": "Document Type",
+      "numberPattern": "Number Pattern",
+      "prefix": "Prefix",
+      "startValue": "Start Value",
+      "currentValue": "Current Value",
+      "yearlyReset": "Yearly Reset",
+      "isActive": "Active"
+    },
+    "validation": {
+      "minZero": "Value must be at least 0."
+    },
+    "preview": {
+      "columnHeader": "Preview",
+      "tooltip": "Show next number",
+      "nextNumber": "Next number:"
     }
   },
   "validation": {

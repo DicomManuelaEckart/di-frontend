@@ -19,7 +19,8 @@
       "copyright": "© {{year}} DI Frontend"
     },
     "sidenav": {
-      "blueprint": "Blueprint"
+      "blueprint": "Blueprint",
+      "numberSequences": "Nummernkreise"
     }
   },
   "blueprint": {
@@ -36,6 +37,30 @@
       "name": "Name",
       "description": "Beschreibung",
       "isActive": "Aktiv"
+    }
+  },
+  "numberSequences": {
+    "title": "Nummernkreise – Liste",
+    "createEdit": {
+      "titleCreate": "Nummernkreis – Erstellen",
+      "titleEdit": "Nummernkreis – Bearbeiten"
+    },
+    "fields": {
+      "documentType": "Dokumenttyp",
+      "numberPattern": "Nummernmuster",
+      "prefix": "Präfix",
+      "startValue": "Startwert",
+      "currentValue": "Aktueller Wert",
+      "yearlyReset": "Jährlicher Reset",
+      "isActive": "Aktiv"
+    },
+    "validation": {
+      "minZero": "Der Wert muss mindestens 0 sein."
+    },
+    "preview": {
+      "columnHeader": "Vorschau",
+      "tooltip": "Nächste Nummer anzeigen",
+      "nextNumber": "Nächste Nummer:"
     }
   },
   "validation": {

@@ -1,0 +1,112 @@
+<div class="number-sequences-list">
+  <div class="number-sequences-list__header">
+    <h1>{{ 'numberSequences.title' | translate }}</h1>
+    <button type="button" class="btn btn--primary" (click)="onCreate()">
+      {{ 'common.add' | translate }}
+    </button>
+  </div>
+
+  @if (previewResult(); as preview) {
+    <div class="number-sequences-list__preview-banner">
+      <igx-icon family="material">visibility</igx-icon>
+      <span>
+        <strong>{{ preview.prefix ?? preview.numberSequenceId }}:</strong>
+        {{ 'numberSequences.preview.nextNumber' | translate }}
+        <code>{{ preview.previewNumber }}</code>
+      </span>
+      <button
+        type="button"
+        class="number-sequences-list__preview-dismiss"
+        (click)="dismissPreview()"
+      >
+        <igx-icon family="material">close</igx-icon>
+      </button>
+    </div>
+  }
+
+  @if (loading()) {
+    <p>{{ 'common.loading' | translate }}</p>
+  } @else {
+    <igx-grid
+      [data]="items()"
+      primaryKey="numberSequenceId"
+      [autoGenerate]="false"
+      [allowFiltering]="true"
+      width="100%"
+    >
+      <igx-column
+        field="prefix"
+        [header]="'numberSequences.fields.prefix' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="numberPattern"
+        [header]="'numberSequences.fields.numberPattern' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="200px"
+      ></igx-column>
+      <igx-column
+        field="documentType"
+        [header]="'numberSequences.fields.documentType' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        dataType="number"
+        width="150px"
+      ></igx-column>
+      <igx-column
+        field="currentValue"
+        [header]="'numberSequences.fields.currentValue' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        dataType="number"
+        width="140px"
+      ></igx-column>
+      <igx-column
+        field="startValue"
+        [header]="'numberSequences.fields.startValue' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        dataType="number"
+        width="130px"
+      ></igx-column>
+      <igx-column
+        field="yearlyReset"
+        [header]="'numberSequences.fields.yearlyReset' | translate"
+        [sortable]="true"
+        dataType="boolean"
+        width="130px"
+      ></igx-column>
+      <igx-column
+        field="isActive"
+        [header]="'numberSequences.fields.isActive' | translate"
+        [sortable]="true"
+        dataType="boolean"
+        width="100px"
+      ></igx-column>
+
+      <igx-column
+        [header]="'numberSequences.preview.columnHeader' | translate"
+        [sortable]="false"
+        [filterable]="false"
+        width="120px"
+      >
+        <ng-template igxCell let-cell="cell">
+          <button
+            type="button"
+            class="number-sequences-list__preview-btn"
+            [disabled]="previewLoading()"
+            (click)="onPreview(cell.row.data)"
+            [title]="'numberSequences.preview.tooltip' | translate"
+          >
+            <igx-icon family="material">visibility</igx-icon>
+          </button>
+        </ng-template>
+      </igx-column>
+
+      <igx-paginator [perPage]="20"></igx-paginator>
+    </igx-grid>
+  }
+</div>
