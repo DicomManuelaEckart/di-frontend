@@ -20,5 +20,6 @@ export class Sidenav {
     { label: 'Number Sequences', route: '/number-sequences', icon: '🔢' },
     { label: 'Tax Rates', route: '/tax-rates', icon: '💰' },
     { label: 'Currencies', route: '/currencies', icon: '💱' },
+    { label: 'Countries', route: '/countries', icon: '🌍' },
   ];
 }

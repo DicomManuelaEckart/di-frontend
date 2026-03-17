@@ -30,6 +30,11 @@ export const routes: Routes = [
           import('./features/currencies/currencies.routes').then((m) => m.currenciesRoutes),
       },
       {
+        path: 'countries',
+        loadChildren: () =>
+          import('./features/countries/countries.routes').then((m) => m.countriesRoutes),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'blueprint',
