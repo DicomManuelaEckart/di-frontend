@@ -1,0 +1,94 @@
+<div class="currencies-list">
+  <div class="currencies-list__header">
+    <h1>{{ 'currencies.title' | translate }}</h1>
+  </div>
+
+  @if (loading()) {
+    <p>{{ 'common.loading' | translate }}</p>
+  } @else {
+    <igx-grid
+      [data]="items()"
+      primaryKey="currencyId"
+      [autoGenerate]="false"
+      [allowFiltering]="true"
+      width="100%"
+    >
+      <igx-column
+        field="currencyCode"
+        [header]="'currencies.fields.currencyCode' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="currencyName"
+        [header]="'currencies.fields.currencyName' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="200px"
+      ></igx-column>
+      <igx-column
+        field="currencyNameEN"
+        [header]="'currencies.fields.currencyNameEN' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="200px"
+      ></igx-column>
+      <igx-column
+        field="symbol"
+        [header]="'currencies.fields.symbol' | translate"
+        [sortable]="true"
+        width="100px"
+      ></igx-column>
+      <igx-column
+        field="decimalDigits"
+        [header]="'currencies.fields.decimalDigits' | translate"
+        [sortable]="true"
+        dataType="number"
+        width="140px"
+      ></igx-column>
+      <igx-column
+        field="isActive"
+        [header]="'currencies.fields.isActive' | translate"
+        [sortable]="true"
+        dataType="boolean"
+        width="100px"
+      ></igx-column>
+
+      <igx-column
+        [header]="'currencies.actions.columnHeader' | translate"
+        [sortable]="false"
+        [filterable]="false"
+        width="140px"
+      >
+        <ng-template igxCell let-cell="cell">
+          <button
+            type="button"
+            class="currencies-list__toggle-btn"
+            [class.currencies-list__toggle-btn--active]="cell.row.data.isActive"
+            [disabled]="togglingId() === cell.row.data.currencyId"
+            (click)="onToggleActive(cell.row.data)"
+            [title]="
+              (cell.row.data.isActive
+                ? 'currencies.actions.deactivate'
+                : 'currencies.actions.activate'
+              ) | translate
+            "
+          >
+            <igx-icon family="material">{{
+              cell.row.data.isActive ? 'toggle_on' : 'toggle_off'
+            }}</igx-icon>
+            <span>{{
+              (cell.row.data.isActive
+                ? 'currencies.actions.deactivate'
+                : 'currencies.actions.activate'
+              ) | translate
+            }}</span>
+          </button>
+        </ng-template>
+      </igx-column>
+
+      <igx-paginator [perPage]="20"></igx-paginator>
+    </igx-grid>
+  }
+</div>

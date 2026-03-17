@@ -19,5 +19,6 @@ export class Sidenav {
     { label: 'Blueprint', route: '/blueprint', icon: '📋' },
     { label: 'Number Sequences', route: '/number-sequences', icon: '🔢' },
     { label: 'Tax Rates', route: '/tax-rates', icon: '💰' },
+    { label: 'Currencies', route: '/currencies', icon: '💱' },
   ];
 }

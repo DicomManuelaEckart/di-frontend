@@ -21,7 +21,8 @@
     "sidenav": {
       "blueprint": "Blueprint",
       "numberSequences": "Nummernkreise",
-      "taxRates": "Steuersätze"
+      "taxRates": "Steuersätze",
+      "currencies": "Währungen"
     }
   },
   "blueprint": {
@@ -88,6 +89,22 @@
     "validation": {
       "minZero": "Der Wert muss mindestens 0 sein.",
       "maxHundred": "Der Wert darf höchstens 100 sein."
+    }
+  },
+  "currencies": {
+    "title": "Währungen – Liste",
+    "fields": {
+      "currencyCode": "Währungscode",
+      "currencyName": "Währungsname",
+      "currencyNameEN": "Währungsname (EN)",
+      "symbol": "Symbol",
+      "decimalDigits": "Dezimalstellen",
+      "isActive": "Aktiv"
+    },
+    "actions": {
+      "columnHeader": "Aktionen",
+      "activate": "Aktivieren",
+      "deactivate": "Deaktivieren"
     }
   },
   "validation": {
