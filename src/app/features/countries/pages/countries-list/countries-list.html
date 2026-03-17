@@ -1,0 +1,113 @@
+<div class="countries-list">
+  <div class="countries-list__header">
+    <h1>{{ 'countries.title' | translate }}</h1>
+  </div>
+
+  @if (loading()) {
+    <p>{{ 'common.loading' | translate }}</p>
+  } @else {
+    <igx-grid
+      [data]="items()"
+      primaryKey="countryId"
+      [autoGenerate]="false"
+      [allowFiltering]="true"
+      width="100%"
+    >
+      <igx-column
+        field="countryCodeAlpha2"
+        [header]="'countries.fields.countryCodeAlpha2' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="100px"
+      ></igx-column>
+      <igx-column
+        field="countryCodeAlpha3"
+        [header]="'countries.fields.countryCodeAlpha3' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="100px"
+      ></igx-column>
+      <igx-column
+        field="countryCodeNumeric"
+        [header]="'countries.fields.countryCodeNumeric' | translate"
+        [sortable]="true"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="countryName"
+        [header]="'countries.fields.countryName' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="200px"
+      ></igx-column>
+      <igx-column
+        field="countryNameEN"
+        [header]="'countries.fields.countryNameEN' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="200px"
+      ></igx-column>
+      <igx-column
+        field="phonePrefix"
+        [header]="'countries.fields.phonePrefix' | translate"
+        [sortable]="true"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="postalCodeFormat"
+        [header]="'countries.fields.postalCodeFormat' | translate"
+        [sortable]="true"
+        width="150px"
+      ></igx-column>
+      <igx-column
+        field="isEuMember"
+        [header]="'countries.fields.isEuMember' | translate"
+        [sortable]="true"
+        dataType="boolean"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="isActive"
+        [header]="'countries.fields.isActive' | translate"
+        [sortable]="true"
+        dataType="boolean"
+        width="100px"
+      ></igx-column>
+
+      <igx-column
+        [header]="'countries.actions.columnHeader' | translate"
+        [sortable]="false"
+        [filterable]="false"
+        width="140px"
+      >
+        <ng-template igxCell let-cell="cell">
+          <button
+            type="button"
+            class="countries-list__toggle-btn"
+            [class.countries-list__toggle-btn--active]="cell.row.data.isActive"
+            [disabled]="togglingId() === cell.row.data.countryId"
+            (click)="onToggleActive(cell.row.data)"
+            [title]="
+              (cell.row.data.isActive
+                ? 'countries.actions.deactivate'
+                : 'countries.actions.activate'
+              ) | translate
+            "
+          >
+            <igx-icon family="material">{{
+              cell.row.data.isActive ? 'toggle_on' : 'toggle_off'
+            }}</igx-icon>
+            <span>{{
+              (cell.row.data.isActive
+                ? 'countries.actions.deactivate'
+                : 'countries.actions.activate'
+              ) | translate
+            }}</span>
+          </button>
+        </ng-template>
+      </igx-column>
+
+      <igx-paginator [perPage]="20"></igx-paginator>
+    </igx-grid>
+  }
+</div>

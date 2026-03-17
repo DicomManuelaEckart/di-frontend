@@ -22,7 +22,8 @@
       "blueprint": "Blueprint",
       "numberSequences": "Number Sequences",
       "taxRates": "Tax Rates",
-      "currencies": "Currencies"
+      "currencies": "Currencies",
+      "countries": "Countries"
     }
   },
   "blueprint": {
@@ -99,6 +100,25 @@
       "currencyNameEN": "Currency Name (EN)",
       "symbol": "Symbol",
       "decimalDigits": "Decimal Digits",
+      "isActive": "Active"
+    },
+    "actions": {
+      "columnHeader": "Actions",
+      "activate": "Activate",
+      "deactivate": "Deactivate"
+    }
+  },
+  "countries": {
+    "title": "Countries – List",
+    "fields": {
+      "countryCodeAlpha2": "Country Code (Alpha-2)",
+      "countryCodeAlpha3": "Country Code (Alpha-3)",
+      "countryCodeNumeric": "Country Code (Numeric)",
+      "countryName": "Country Name",
+      "countryNameEN": "Country Name (EN)",
+      "phonePrefix": "Phone Prefix",
+      "postalCodeFormat": "Postal Code Format",
+      "isEuMember": "EU Member",
       "isActive": "Active"
     },
     "actions": {

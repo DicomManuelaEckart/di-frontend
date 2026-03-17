@@ -22,7 +22,8 @@
       "blueprint": "Blueprint",
       "numberSequences": "Nummernkreise",
       "taxRates": "Steuersätze",
-      "currencies": "Währungen"
+      "currencies": "Währungen",
+      "countries": "Länder"
     }
   },
   "blueprint": {
@@ -99,6 +100,25 @@
       "currencyNameEN": "Währungsname (EN)",
       "symbol": "Symbol",
       "decimalDigits": "Dezimalstellen",
+      "isActive": "Aktiv"
+    },
+    "actions": {
+      "columnHeader": "Aktionen",
+      "activate": "Aktivieren",
+      "deactivate": "Deaktivieren"
+    }
+  },
+  "countries": {
+    "title": "Länder – Liste",
+    "fields": {
+      "countryCodeAlpha2": "Ländercode (Alpha-2)",
+      "countryCodeAlpha3": "Ländercode (Alpha-3)",
+      "countryCodeNumeric": "Ländercode (Numerisch)",
+      "countryName": "Ländername",
+      "countryNameEN": "Ländername (EN)",
+      "phonePrefix": "Telefonvorwahl",
+      "postalCodeFormat": "PLZ-Format",
+      "isEuMember": "EU-Mitglied",
       "isActive": "Aktiv"
     },
     "actions": {
