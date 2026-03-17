@@ -20,7 +20,8 @@
     },
     "sidenav": {
       "blueprint": "Blueprint",
-      "numberSequences": "Number Sequences"
+      "numberSequences": "Number Sequences",
+      "taxRates": "Tax Rates"
     }
   },
   "blueprint": {
@@ -61,6 +62,32 @@
       "columnHeader": "Preview",
       "tooltip": "Show next number",
       "nextNumber": "Next number:"
+    }
+  },
+  "taxRates": {
+    "title": "Tax Rates – List",
+    "createEdit": {
+      "titleCreate": "Tax Rate – Create",
+      "titleEdit": "Tax Rate – Edit"
+    },
+    "fields": {
+      "name": "Name",
+      "percentage": "Percentage",
+      "taxType": "Tax Type",
+      "countryCode": "Country Code",
+      "regionCode": "Region Code",
+      "validFrom": "Valid From",
+      "validTo": "Valid To",
+      "ediTaxCode": "EDI Tax Code",
+      "isActive": "Active"
+    },
+    "actions": {
+      "columnHeader": "Actions",
+      "deactivate": "Deactivate"
+    },
+    "validation": {
+      "minZero": "Value must be at least 0.",
+      "maxHundred": "Value must not exceed 100."
     }
   },
   "validation": {

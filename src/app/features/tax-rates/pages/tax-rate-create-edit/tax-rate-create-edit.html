@@ -1,0 +1,114 @@
+<div class="tax-rate-create-edit">
+  <h1>{{ titleKey() | translate }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Tax Rate Name -->
+    <igx-input-group type="border">
+      <label igxLabel for="taxRateName">{{ 'taxRates.fields.name' | translate }}</label>
+      <input igxInput id="taxRateName" formControlName="taxRateName" type="text" />
+      @if (showErrors('taxRateName')) {
+        @if (
+          form.controls.taxRateName.errors?.['required'] ||
+          form.controls.taxRateName.errors?.['notBlank']
+        ) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Tax Percentage -->
+    <igx-input-group type="border">
+      <label igxLabel for="taxPercentage">{{ 'taxRates.fields.percentage' | translate }}</label>
+      <input
+        igxInput
+        id="taxPercentage"
+        formControlName="taxPercentage"
+        type="number"
+        step="0.01"
+      />
+      @if (showErrors('taxPercentage')) {
+        @if (form.controls.taxPercentage.errors?.['required']) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+        @if (form.controls.taxPercentage.errors?.['min']) {
+          <igx-hint>{{ 'taxRates.validation.minZero' | translate }}</igx-hint>
+        }
+        @if (form.controls.taxPercentage.errors?.['max']) {
+          <igx-hint>{{ 'taxRates.validation.maxHundred' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Tax Type -->
+    <igx-input-group type="border">
+      <label igxLabel for="taxType">{{ 'taxRates.fields.taxType' | translate }}</label>
+      <input igxInput id="taxType" formControlName="taxType" type="number" step="1" />
+      @if (showErrors('taxType')) {
+        @if (form.controls.taxType.errors?.['required']) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+        @if (form.controls.taxType.errors?.['min']) {
+          <igx-hint>{{ 'taxRates.validation.minZero' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Country Code -->
+    <igx-input-group type="border">
+      <label igxLabel for="countryCode">{{ 'taxRates.fields.countryCode' | translate }}</label>
+      <input igxInput id="countryCode" formControlName="countryCode" type="text" />
+      @if (showErrors('countryCode')) {
+        @if (
+          form.controls.countryCode.errors?.['required'] ||
+          form.controls.countryCode.errors?.['notBlank']
+        ) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Region Code -->
+    <igx-input-group type="border">
+      <label igxLabel for="regionCode">{{ 'taxRates.fields.regionCode' | translate }}</label>
+      <input igxInput id="regionCode" formControlName="regionCode" type="text" />
+    </igx-input-group>
+
+    <!-- Valid From -->
+    <igx-input-group type="border">
+      <label igxLabel for="validFrom">{{ 'taxRates.fields.validFrom' | translate }}</label>
+      <input igxInput id="validFrom" formControlName="validFrom" type="date" />
+      @if (showErrors('validFrom')) {
+        @if (form.controls.validFrom.errors?.['required']) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Valid To -->
+    <igx-input-group type="border">
+      <label igxLabel for="validTo">{{ 'taxRates.fields.validTo' | translate }}</label>
+      <input igxInput id="validTo" formControlName="validTo" type="date" />
+    </igx-input-group>
+
+    <!-- EDI Tax Code -->
+    <igx-input-group type="border">
+      <label igxLabel for="ediTaxCode">{{ 'taxRates.fields.ediTaxCode' | translate }}</label>
+      <input igxInput id="ediTaxCode" formControlName="ediTaxCode" type="text" />
+    </igx-input-group>
+
+    <!-- Form State (Signals) -->
+    @if (isPending()) {
+      <p class="tax-rate-create-edit__status">{{ 'common.loading' | translate }}</p>
+    }
+
+    <!-- Actions -->
+    <div class="tax-rate-create-edit__actions">
+      <button type="button" class="btn btn--secondary" (click)="onCancel()">
+        {{ 'common.cancel' | translate }}
+      </button>
+      <button type="submit" class="btn btn--primary" [disabled]="!isValid() || isPending()">
+        {{ 'common.save' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

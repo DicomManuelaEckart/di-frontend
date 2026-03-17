@@ -20,7 +20,8 @@
     },
     "sidenav": {
       "blueprint": "Blueprint",
-      "numberSequences": "Nummernkreise"
+      "numberSequences": "Nummernkreise",
+      "taxRates": "Steuersätze"
     }
   },
   "blueprint": {
@@ -61,6 +62,32 @@
       "columnHeader": "Vorschau",
       "tooltip": "Nächste Nummer anzeigen",
       "nextNumber": "Nächste Nummer:"
+    }
+  },
+  "taxRates": {
+    "title": "Steuersätze – Liste",
+    "createEdit": {
+      "titleCreate": "Steuersatz – Erstellen",
+      "titleEdit": "Steuersatz – Bearbeiten"
+    },
+    "fields": {
+      "name": "Bezeichnung",
+      "percentage": "Prozentsatz",
+      "taxType": "Steuerart",
+      "countryCode": "Ländercode",
+      "regionCode": "Regionscode",
+      "validFrom": "Gültig ab",
+      "validTo": "Gültig bis",
+      "ediTaxCode": "EDI-Steuercode",
+      "isActive": "Aktiv"
+    },
+    "actions": {
+      "columnHeader": "Aktionen",
+      "deactivate": "Deaktivieren"
+    },
+    "validation": {
+      "minZero": "Der Wert muss mindestens 0 sein.",
+      "maxHundred": "Der Wert darf höchstens 100 sein."
     }
   },
   "validation": {
