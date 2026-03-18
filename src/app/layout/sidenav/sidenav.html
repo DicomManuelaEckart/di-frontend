@@ -1,13 +1,35 @@
 <nav class="sidenav" aria-label="Main navigation">
   <ul class="sidenav__list">
-    @for (item of navItems; track item.route) {
-      <li class="sidenav__item">
-        <a class="sidenav__link" [routerLink]="item.route" routerLinkActive="sidenav__link--active">
-          @if (item.icon) {
-            <span class="sidenav__icon">{{ item.icon }}</span>
-          }
-          {{ item.label }}
-        </a>
+    @for (group of navGroups; track group.label) {
+      <li class="sidenav__group">
+        <button
+          type="button"
+          class="sidenav__group-toggle"
+          [attr.aria-expanded]="isExpanded(group.label)"
+          (click)="toggleGroup(group.label)"
+        >
+          <igx-icon family="material">{{ group.icon }}</igx-icon>
+          <span class="sidenav__group-label">{{ group.label }}</span>
+          <igx-icon class="sidenav__chevron" family="material">
+            {{ isExpanded(group.label) ? 'expand_less' : 'expand_more' }}
+          </igx-icon>
+        </button>
+        @if (isExpanded(group.label)) {
+          <ul class="sidenav__sublist">
+            @for (item of group.children; track item.route) {
+              <li class="sidenav__item">
+                <a
+                  class="sidenav__link"
+                  [routerLink]="item.route"
+                  routerLinkActive="sidenav__link--active"
+                >
+                  <igx-icon family="material">{{ item.icon }}</igx-icon>
+                  {{ item.label }}
+                </a>
+              </li>
+            }
+          </ul>
+        }
       </li>
     }
   </ul>
