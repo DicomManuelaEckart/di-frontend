@@ -23,7 +23,8 @@
       "numberSequences": "Nummernkreise",
       "taxRates": "Steuersätze",
       "currencies": "Währungen",
-      "countries": "Länder"
+      "countries": "Länder",
+      "regions": "Regionen"
     }
   },
   "blueprint": {
@@ -125,6 +126,17 @@
       "columnHeader": "Aktionen",
       "activate": "Aktivieren",
       "deactivate": "Deaktivieren"
+    }
+  },
+  "regions": {
+    "title": "Regionen – Liste",
+    "countrySelect": "Land",
+    "selectCountryPlaceholder": "– Land auswählen –",
+    "fields": {
+      "regionCode": "Regionscode",
+      "regionName": "Regionsname",
+      "countryCodeAlpha2": "Ländercode",
+      "isActive": "Aktiv"
     }
   },
   "validation": {

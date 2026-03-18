@@ -1,0 +1,69 @@
+<div class="regions-list">
+  <div class="regions-list__header">
+    <h1>{{ 'regions.title' | translate }}</h1>
+  </div>
+
+  <div class="regions-list__filter">
+    <label for="country-select">{{ 'regions.countrySelect' | translate }}</label>
+    @if (countriesLoading()) {
+      <span>{{ 'common.loading' | translate }}</span>
+    } @else {
+      <select
+        id="country-select"
+        (change)="onCountryChange($event)"
+        [value]="selectedCountryCode() ?? ''"
+      >
+        <option value="">{{ 'regions.selectCountryPlaceholder' | translate }}</option>
+        @for (country of countries(); track country.countryId) {
+          <option [value]="country.countryCodeAlpha2">
+            {{ country.countryName }} ({{ country.countryCodeAlpha2 }})
+          </option>
+        }
+      </select>
+    }
+  </div>
+
+  @if (selectedCountryCode()) {
+    @if (loading()) {
+      <p>{{ 'common.loading' | translate }}</p>
+    } @else {
+      <igx-grid
+        [data]="items()"
+        primaryKey="regionId"
+        [autoGenerate]="false"
+        [allowFiltering]="true"
+        width="100%"
+      >
+        <igx-column
+          field="regionCode"
+          [header]="'regions.fields.regionCode' | translate"
+          [sortable]="true"
+          [filterable]="true"
+          width="150px"
+        ></igx-column>
+        <igx-column
+          field="regionName"
+          [header]="'regions.fields.regionName' | translate"
+          [sortable]="true"
+          [filterable]="true"
+          width="300px"
+        ></igx-column>
+        <igx-column
+          field="countryCodeAlpha2"
+          [header]="'regions.fields.countryCodeAlpha2' | translate"
+          [sortable]="true"
+          width="150px"
+        ></igx-column>
+        <igx-column
+          field="isActive"
+          [header]="'regions.fields.isActive' | translate"
+          [sortable]="true"
+          dataType="boolean"
+          width="100px"
+        ></igx-column>
+
+        <igx-paginator [perPage]="20"></igx-paginator>
+      </igx-grid>
+    }
+  }
+</div>

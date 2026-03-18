@@ -35,6 +35,11 @@ export const routes: Routes = [
           import('./features/countries/countries.routes').then((m) => m.countriesRoutes),
       },
       {
+        path: 'regions',
+        loadChildren: () =>
+          import('./features/regions/regions.routes').then((m) => m.regionsRoutes),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'blueprint',
