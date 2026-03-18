@@ -10,9 +10,11 @@ export interface FieldError {
 }
 
 export interface ProblemDetails {
-  readonly status: number;
-  readonly type: string;
-  readonly title: string;
+  readonly status?: number;
+  readonly type?: string;
+  readonly title?: string;
+  readonly detail?: string;
+  readonly instance?: string;
   readonly errorCode?: string;
   readonly resourceKey?: string;
   readonly correlationId?: string;

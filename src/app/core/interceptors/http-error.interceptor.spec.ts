@@ -104,7 +104,27 @@ describe('httpErrorInterceptor', () => {
     const req = httpTesting.expectOne('/api/test');
     req.flush(problemDetails, { status: 404, statusText: 'Not Found' });
 
-    expect(showWarningSpy).toHaveBeenCalledWith('Resource not found');
+    expect(showWarningSpy).toHaveBeenCalledWith('Resource not found', false);
+  });
+
+  it('should prefer detail over title from ProblemDetails on 404', () => {
+    const showWarningSpy = vi.spyOn(notificationService, 'showWarning');
+
+    const problemDetails = {
+      status: 404,
+      type: 'https://api.example.com/errors/not-found',
+      title: 'Not Found',
+      detail: 'Country with code XY was not found.',
+    };
+
+    httpClient.get('/api/test').subscribe({
+      error: () => undefined,
+    });
+
+    const req = httpTesting.expectOne('/api/test');
+    req.flush(problemDetails, { status: 404, statusText: 'Not Found' });
+
+    expect(showWarningSpy).toHaveBeenCalledWith('Country with code XY was not found.', false);
   });
 
   it('should show warning notification on 409', () => {
@@ -120,6 +140,26 @@ describe('httpErrorInterceptor', () => {
     req.flush(null, { status: 409, statusText: 'Conflict' });
 
     expect(showWarningSpy).toHaveBeenCalledWith('errors.conflict');
+  });
+
+  it('should prefer detail over title from ProblemDetails on 409', () => {
+    const showWarningSpy = vi.spyOn(notificationService, 'showWarning');
+
+    const problemDetails = {
+      status: 409,
+      type: 'https://api.example.com/errors/conflict',
+      title: 'Conflict',
+      detail: 'The country is already active.',
+    };
+
+    httpClient.get('/api/test').subscribe({
+      error: () => undefined,
+    });
+
+    const req = httpTesting.expectOne('/api/test');
+    req.flush(problemDetails, { status: 409, statusText: 'Conflict' });
+
+    expect(showWarningSpy).toHaveBeenCalledWith('The country is already active.', false);
   });
 
   it('should show error notification on 400 with ProblemDetails', () => {
@@ -139,7 +179,32 @@ describe('httpErrorInterceptor', () => {
     const req = httpTesting.expectOne('/api/test');
     req.flush(problemDetails, { status: 400, statusText: 'Bad Request' });
 
-    expect(showErrorSpy).toHaveBeenCalledWith('Validation failed', 'corr-456');
+    expect(showErrorSpy).toHaveBeenCalledWith('Validation failed', 'corr-456', false);
+  });
+
+  it('should prefer detail over title from ProblemDetails on 400', () => {
+    const showErrorSpy = vi.spyOn(notificationService, 'showError');
+
+    const problemDetails = {
+      status: 400,
+      type: 'https://api.example.com/errors/validation',
+      title: 'Validation failed',
+      detail: 'The field "name" must not be empty.',
+      correlationId: 'corr-456',
+    };
+
+    httpClient.get('/api/test').subscribe({
+      error: () => undefined,
+    });
+
+    const req = httpTesting.expectOne('/api/test');
+    req.flush(problemDetails, { status: 400, statusText: 'Bad Request' });
+
+    expect(showErrorSpy).toHaveBeenCalledWith(
+      'The field "name" must not be empty.',
+      'corr-456',
+      false,
+    );
   });
 
   it('should show error notification on 500', () => {

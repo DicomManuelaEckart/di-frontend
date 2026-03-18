@@ -1,4 +1,4 @@
-import { ApplicationConfig, ErrorHandler, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -6,7 +6,6 @@ import { provideTranslateService, provideMissingTranslationHandler } from '@ngx-
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { routes } from './app.routes';
-import { GlobalErrorHandler } from './core/error-handling/global-error-handler';
 import { httpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 import { AppMissingTranslationHandler } from './core/services/missing-translation-handler';
 import { API_BASE_URL } from './core/tokens/api-base-url.token';
@@ -18,7 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()),
     provideHttpClient(withInterceptors([httpErrorInterceptor])),
     provideAnimations(),
-    { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: API_BASE_URL, useValue: environment.apiUrl },
     provideTranslateService({
       defaultLanguage: 'de',

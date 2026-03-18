@@ -35,6 +35,7 @@ describe('NotificationService', () => {
     expect(notification).not.toBeNull();
     expect(notification!.message).toBe('Operation successful');
     expect(notification!.type).toBe('success');
+    expect(notification!.translatable).toBe(true);
     expect(notification!.autoClose).toBe(true);
     expect(notification!.displayTime).toBe(3000);
   });
@@ -46,6 +47,7 @@ describe('NotificationService', () => {
     expect(notification).not.toBeNull();
     expect(notification!.message).toBe('Something went wrong');
     expect(notification!.type).toBe('error');
+    expect(notification!.translatable).toBe(true);
     expect(notification!.correlationId).toBe('corr-123');
     expect(notification!.displayTime).toBe(8000);
   });
@@ -58,6 +60,15 @@ describe('NotificationService', () => {
     expect(notification!.correlationId).toBeUndefined();
   });
 
+  it('should show non-translatable error notification', () => {
+    service.showError('Raw API detail message', undefined, false);
+
+    const notification = service.notification();
+    expect(notification).not.toBeNull();
+    expect(notification!.message).toBe('Raw API detail message');
+    expect(notification!.translatable).toBe(false);
+  });
+
   it('should show warning notification', () => {
     service.showWarning('Be careful');
 
@@ -65,7 +76,17 @@ describe('NotificationService', () => {
     expect(notification).not.toBeNull();
     expect(notification!.message).toBe('Be careful');
     expect(notification!.type).toBe('warning');
+    expect(notification!.translatable).toBe(true);
     expect(notification!.displayTime).toBe(5000);
+  });
+
+  it('should show non-translatable warning notification', () => {
+    service.showWarning('Raw API warning', false);
+
+    const notification = service.notification();
+    expect(notification).not.toBeNull();
+    expect(notification!.message).toBe('Raw API warning');
+    expect(notification!.translatable).toBe(false);
   });
 
   it('should show info notification', () => {

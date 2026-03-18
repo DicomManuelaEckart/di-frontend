@@ -15,9 +15,7 @@ function isProblemDetails(body: unknown): body is ProblemDetails {
   return (
     typeof body === 'object' &&
     body !== null &&
-    'status' in body &&
-    'type' in body &&
-    'title' in body
+    ('status' in body || 'type' in body || 'title' in body || 'detail' in body)
   );
 }
 
@@ -42,22 +40,34 @@ export const httpErrorInterceptor: HttpInterceptorFn = (
 
       if (error.status === 404) {
         const problem = parseProblemDetails(error);
-        const message = problem?.title ?? 'errors.resourceNotFound';
-        notificationService.showWarning(message);
+        const apiMessage = problem?.detail ?? problem?.title;
+        if (apiMessage) {
+          notificationService.showWarning(apiMessage, false);
+        } else {
+          notificationService.showWarning('errors.resourceNotFound');
+        }
         return throwError(() => error);
       }
 
       if (error.status === 409) {
         const problem = parseProblemDetails(error);
-        const message = problem?.title ?? 'errors.conflict';
-        notificationService.showWarning(message);
+        const apiMessage = problem?.detail ?? problem?.title;
+        if (apiMessage) {
+          notificationService.showWarning(apiMessage, false);
+        } else {
+          notificationService.showWarning('errors.conflict');
+        }
         return throwError(() => error);
       }
 
       if (error.status >= 400 && error.status < 500) {
         const problem = parseProblemDetails(error);
-        const message = problem?.title ?? 'errors.clientError';
-        notificationService.showError(message, problem?.correlationId);
+        const apiMessage = problem?.detail ?? problem?.title;
+        if (apiMessage) {
+          notificationService.showError(apiMessage, problem?.correlationId, false);
+        } else {
+          notificationService.showError('errors.clientError', problem?.correlationId);
+        }
         return throwError(() => error);
       }
 
