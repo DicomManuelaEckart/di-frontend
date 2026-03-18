@@ -6,6 +6,7 @@ export interface Notification {
   readonly message: string;
   readonly type: NotificationType;
   readonly correlationId?: string;
+  readonly translatable: boolean;
   readonly autoClose: boolean;
   readonly displayTime: number;
 }
@@ -22,25 +23,44 @@ export class NotificationService {
   readonly notification = this.notificationSignal.asReadonly();
 
   showSuccess(message: string): void {
-    this.show({ message, type: 'success', autoClose: true, displayTime: SUCCESS_DISPLAY_TIME });
+    this.show({
+      message,
+      type: 'success',
+      translatable: true,
+      autoClose: true,
+      displayTime: SUCCESS_DISPLAY_TIME,
+    });
   }
 
-  showError(message: string, correlationId?: string): void {
+  showError(message: string, correlationId?: string, translatable = true): void {
     this.show({
       message,
       type: 'error',
       correlationId,
+      translatable,
       autoClose: true,
       displayTime: ERROR_DISPLAY_TIME,
     });
   }
 
-  showWarning(message: string): void {
-    this.show({ message, type: 'warning', autoClose: true, displayTime: DEFAULT_DISPLAY_TIME });
+  showWarning(message: string, translatable = true): void {
+    this.show({
+      message,
+      type: 'warning',
+      translatable,
+      autoClose: true,
+      displayTime: DEFAULT_DISPLAY_TIME,
+    });
   }
 
   showInfo(message: string): void {
-    this.show({ message, type: 'info', autoClose: true, displayTime: DEFAULT_DISPLAY_TIME });
+    this.show({
+      message,
+      type: 'info',
+      translatable: true,
+      autoClose: true,
+      displayTime: DEFAULT_DISPLAY_TIME,
+    });
   }
 
   dismiss(): void {

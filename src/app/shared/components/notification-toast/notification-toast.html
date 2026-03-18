@@ -1,0 +1,48 @@
+@if (notification(); as n) {
+  <div
+    class="notification-toast"
+    [class.notification-toast--success]="n.type === 'success'"
+    [class.notification-toast--error]="n.type === 'error'"
+    [class.notification-toast--warning]="n.type === 'warning'"
+    [class.notification-toast--info]="n.type === 'info'"
+    role="alert"
+    aria-live="assertive"
+  >
+    <span class="notification-toast__icon">
+      @switch (n.type) {
+        @case ('success') {
+          ✔
+        }
+        @case ('error') {
+          ✖
+        }
+        @case ('warning') {
+          ⚠
+        }
+        @case ('info') {
+          ℹ
+        }
+      }
+    </span>
+    <span class="notification-toast__message">
+      @if (n.translatable) {
+        {{ n.message | translate }}
+      } @else {
+        {{ n.message }}
+      }
+    </span>
+    @if (n.correlationId) {
+      <span class="notification-toast__correlation">
+        {{ 'errors.correlationIdHint' | translate: { correlationId: n.correlationId } }}
+      </span>
+    }
+    <button
+      type="button"
+      class="notification-toast__close"
+      (click)="notificationService.dismiss()"
+      [attr.aria-label]="'common.cancel' | translate"
+    >
+      ✕
+    </button>
+  </div>
+}
