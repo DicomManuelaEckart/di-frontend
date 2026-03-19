@@ -24,7 +24,10 @@
       "taxRates": "Tax Rates",
       "currencies": "Currencies",
       "countries": "Countries",
-      "regions": "Regions"
+      "regions": "Regions",
+      "articles": "Articles",
+      "organization": "Organization",
+      "masterdata": "Masterdata"
     }
   },
   "blueprint": {
@@ -137,6 +140,39 @@
       "regionName": "Region Name",
       "countryCodeAlpha2": "Country Code",
       "isActive": "Active"
+    }
+  },
+  "articles": {
+    "title": "Articles – List",
+    "createEdit": {
+      "titleCreate": "Article – Create",
+      "titleEdit": "Article – Edit"
+    },
+    "fields": {
+      "articleId": "Article ID",
+      "articleNr": "Article Nr.",
+      "gtin": "GTIN",
+      "articleName": "Article Name",
+      "articleLongText": "Long Text",
+      "articleType": "Article Type",
+      "supplierArticleNr": "Supplier Article Nr.",
+      "buyerArticleNr": "Buyer Article Nr.",
+      "brandName": "Brand",
+      "modelDescription": "Model Description",
+      "receiptText": "Receipt Text",
+      "productGroupId": "Product Group",
+      "taxRateId": "Tax Rate",
+      "articleStatus": "Status",
+      "createdAt": "Created At",
+      "modifiedAt": "Modified At"
+    },
+    "actions": {
+      "columnHeader": "Actions",
+      "deactivate": "Deactivate",
+      "reactivate": "Reactivate"
+    },
+    "validation": {
+      "minZero": "Value must be at least 0."
     }
   },
   "validation": {

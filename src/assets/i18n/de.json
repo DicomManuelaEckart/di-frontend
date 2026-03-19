@@ -24,7 +24,10 @@
       "taxRates": "Steuersätze",
       "currencies": "Währungen",
       "countries": "Länder",
-      "regions": "Regionen"
+      "regions": "Regionen",
+      "articles": "Artikel",
+      "organization": "Organisation",
+      "masterdata": "Stammdaten"
     }
   },
   "blueprint": {
@@ -137,6 +140,39 @@
       "regionName": "Regionsname",
       "countryCodeAlpha2": "Ländercode",
       "isActive": "Aktiv"
+    }
+  },
+  "articles": {
+    "title": "Artikel – Liste",
+    "createEdit": {
+      "titleCreate": "Artikel – Erstellen",
+      "titleEdit": "Artikel – Bearbeiten"
+    },
+    "fields": {
+      "articleId": "Artikel-ID",
+      "articleNr": "Artikelnr.",
+      "gtin": "GTIN",
+      "articleName": "Artikelname",
+      "articleLongText": "Langtext",
+      "articleType": "Artikeltyp",
+      "supplierArticleNr": "Lieferanten-Artikelnr.",
+      "buyerArticleNr": "Einkäufer-Artikelnr.",
+      "brandName": "Marke",
+      "modelDescription": "Modellbeschreibung",
+      "receiptText": "Bontext",
+      "productGroupId": "Warengruppe",
+      "taxRateId": "Steuersatz",
+      "articleStatus": "Status",
+      "createdAt": "Erstellt am",
+      "modifiedAt": "Geändert am"
+    },
+    "actions": {
+      "columnHeader": "Aktionen",
+      "deactivate": "Deaktivieren",
+      "reactivate": "Reaktivieren"
+    },
+    "validation": {
+      "minZero": "Der Wert muss mindestens 0 sein."
     }
   },
   "validation": {

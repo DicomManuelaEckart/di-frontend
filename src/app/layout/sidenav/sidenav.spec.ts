@@ -39,8 +39,10 @@ describe('Sidenav', () => {
   it('should render child links when group is expanded', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const links = compiled.querySelectorAll('.sidenav__link');
-    const totalChildren = component.navGroups.reduce((sum, g) => sum + g.children.length, 0);
-    expect(links.length).toBe(totalChildren);
+    const expandedChildren = component.navGroups
+      .filter((g) => component.isExpanded(g.label))
+      .reduce((sum, g) => sum + g.children.length, 0);
+    expect(links.length).toBe(expandedChildren);
   });
 
   it('should collapse group when toggle is clicked', () => {

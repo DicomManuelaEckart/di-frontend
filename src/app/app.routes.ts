@@ -40,6 +40,11 @@ export const routes: Routes = [
           import('./features/regions/regions.routes').then((m) => m.regionsRoutes),
       },
       {
+        path: 'articles',
+        loadChildren: () =>
+          import('./features/articles/articles.routes').then((m) => m.articlesRoutes),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'blueprint',
