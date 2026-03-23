@@ -35,6 +35,11 @@ export class Sidenav {
         { label: 'Regions', route: '/regions', icon: 'map' },
       ],
     },
+    {
+      label: 'Masterdata',
+      icon: 'category',
+      children: [{ label: 'Articles', route: '/articles', icon: 'inventory_2' }],
+    },
   ];
 
   private readonly expandedGroups = signal<Set<string>>(new Set(['Organization']));

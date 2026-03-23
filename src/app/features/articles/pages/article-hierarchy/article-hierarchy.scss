@@ -1,0 +1,100 @@
+.article-hierarchy {
+  padding: var(--spacing-lg, 1.5rem);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg, 1.5rem);
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md, 1rem);
+  }
+
+  &__create-form {
+    background-color: var(--color-surface, #fafafa);
+    border: 1px solid var(--color-border, #e0e0e0);
+    border-radius: var(--border-radius, 4px);
+    padding: var(--spacing-lg, 1.5rem);
+    margin-bottom: var(--spacing-lg, 1.5rem);
+    max-width: 600px;
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: var(--spacing-md, 1rem);
+    }
+
+    igx-input-group {
+      margin-bottom: var(--spacing-md, 1rem);
+      width: 100%;
+    }
+  }
+
+  &__checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm, 0.5rem);
+    margin-bottom: var(--spacing-md, 1rem);
+  }
+
+  &__form-actions {
+    display: flex;
+    gap: var(--spacing-md, 1rem);
+    justify-content: flex-end;
+    padding-top: var(--spacing-md, 1rem);
+    border-top: 1px solid var(--color-border, #e0e0e0);
+  }
+
+  &__delete-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs, 0.25rem);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs, 0.25rem) var(--spacing-sm, 0.5rem);
+    border-radius: var(--border-radius-sm, 4px);
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-error, #d32f2f);
+
+    &:hover {
+      background-color: var(--color-hover, rgba(0, 0, 0, 0.04));
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.btn {
+  padding: var(--spacing-sm, 0.5rem) var(--spacing-lg, 1.5rem);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius, 4px);
+  cursor: pointer;
+  font-size: 1rem;
+
+  &--primary {
+    background-color: var(--color-primary, #1976d2);
+    color: var(--color-on-primary, #fff);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    border-color: var(--color-border, #ccc);
+    color: var(--color-text, #333);
+  }
+}

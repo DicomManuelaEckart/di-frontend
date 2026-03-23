@@ -1,0 +1,126 @@
+<div class="article-create-edit">
+  <h1>{{ titleKey() | translate }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Article Number -->
+    <igx-input-group type="border">
+      <label igxLabel for="articleNr">{{ 'articles.fields.articleNr' | translate }}</label>
+      <input igxInput id="articleNr" formControlName="articleNr" type="text" />
+    </igx-input-group>
+
+    <!-- GTIN -->
+    <igx-input-group type="border">
+      <label igxLabel for="gtin">{{ 'articles.fields.gtin' | translate }}</label>
+      <input igxInput id="gtin" formControlName="gtin" type="text" />
+    </igx-input-group>
+
+    <!-- Article Name -->
+    <igx-input-group type="border">
+      <label igxLabel for="articleName">{{ 'articles.fields.articleName' | translate }}</label>
+      <input igxInput id="articleName" formControlName="articleName" type="text" />
+      @if (showErrors('articleName')) {
+        @if (
+          form.controls.articleName.errors?.['required'] ||
+          form.controls.articleName.errors?.['notBlank']
+        ) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Article Long Text -->
+    <igx-input-group type="border">
+      <label igxLabel for="articleLongText">{{
+        'articles.fields.articleLongText' | translate
+      }}</label>
+      <input igxInput id="articleLongText" formControlName="articleLongText" type="text" />
+    </igx-input-group>
+
+    <!-- Article Type -->
+    <igx-input-group type="border">
+      <label igxLabel for="articleType">{{ 'articles.fields.articleType' | translate }}</label>
+      <input igxInput id="articleType" formControlName="articleType" type="number" step="1" />
+      @if (showErrors('articleType')) {
+        @if (form.controls.articleType.errors?.['required']) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+        @if (form.controls.articleType.errors?.['min']) {
+          <igx-hint>{{ 'articles.validation.minZero' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Supplier Article Nr -->
+    <igx-input-group type="border">
+      <label igxLabel for="supplierArticleNr">{{
+        'articles.fields.supplierArticleNr' | translate
+      }}</label>
+      <input igxInput id="supplierArticleNr" formControlName="supplierArticleNr" type="text" />
+    </igx-input-group>
+
+    <!-- Buyer Article Nr -->
+    <igx-input-group type="border">
+      <label igxLabel for="buyerArticleNr">{{
+        'articles.fields.buyerArticleNr' | translate
+      }}</label>
+      <input igxInput id="buyerArticleNr" formControlName="buyerArticleNr" type="text" />
+    </igx-input-group>
+
+    <!-- Brand Name -->
+    <igx-input-group type="border">
+      <label igxLabel for="brandName">{{ 'articles.fields.brandName' | translate }}</label>
+      <input igxInput id="brandName" formControlName="brandName" type="text" />
+    </igx-input-group>
+
+    <!-- Model Description -->
+    <igx-input-group type="border">
+      <label igxLabel for="modelDescription">{{
+        'articles.fields.modelDescription' | translate
+      }}</label>
+      <input igxInput id="modelDescription" formControlName="modelDescription" type="text" />
+    </igx-input-group>
+
+    <!-- Receipt Text -->
+    <igx-input-group type="border">
+      <label igxLabel for="receiptText">{{ 'articles.fields.receiptText' | translate }}</label>
+      <input igxInput id="receiptText" formControlName="receiptText" type="text" />
+    </igx-input-group>
+
+    <!-- Product Group ID -->
+    <igx-input-group type="border">
+      <label igxLabel for="productGroupId">{{
+        'articles.fields.productGroupId' | translate
+      }}</label>
+      <input igxInput id="productGroupId" formControlName="productGroupId" type="text" />
+    </igx-input-group>
+
+    <!-- Tax Rate ID -->
+    <igx-input-group type="border">
+      <label igxLabel for="taxRateId">{{ 'articles.fields.taxRateId' | translate }}</label>
+      <input igxInput id="taxRateId" formControlName="taxRateId" type="text" />
+      @if (showErrors('taxRateId')) {
+        @if (
+          form.controls.taxRateId.errors?.['required'] ||
+          form.controls.taxRateId.errors?.['notBlank']
+        ) {
+          <igx-hint>{{ 'validation.required' | translate }}</igx-hint>
+        }
+      }
+    </igx-input-group>
+
+    <!-- Form State -->
+    @if (isPending()) {
+      <p class="article-create-edit__status">{{ 'common.loading' | translate }}</p>
+    }
+
+    <!-- Actions -->
+    <div class="article-create-edit__actions">
+      <button type="button" class="btn btn--secondary" (click)="onCancel()">
+        {{ 'common.cancel' | translate }}
+      </button>
+      <button type="submit" class="btn btn--primary" [disabled]="!isValid() || isPending()">
+        {{ 'common.save' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

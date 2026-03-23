@@ -1,0 +1,168 @@
+<div class="articles-list">
+  <div class="articles-list__header">
+    <h1>{{ 'articles.title' | translate }}</h1>
+    <div class="articles-list__toolbar">
+      <input
+        type="text"
+        class="articles-list__search"
+        [placeholder]="'common.search' | translate"
+        [value]="searchTerm()"
+        (input)="onSearch($event)"
+      />
+      <button type="button" class="btn btn--primary" (click)="onCreate()">
+        {{ 'common.add' | translate }}
+      </button>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <p>{{ 'common.loading' | translate }}</p>
+  } @else {
+    <igx-grid
+      [data]="items()"
+      primaryKey="articleId"
+      [autoGenerate]="false"
+      [allowFiltering]="true"
+      width="100%"
+    >
+      <igx-column
+        field="articleNr"
+        [header]="'articles.fields.articleNr' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="140px"
+      ></igx-column>
+      <igx-column
+        field="articleName"
+        [header]="'articles.fields.articleName' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="220px"
+      ></igx-column>
+      <igx-column
+        field="gtin"
+        [header]="'articles.fields.gtin' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="160px"
+      ></igx-column>
+      <igx-column
+        field="articleType"
+        [header]="'articles.fields.articleType' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        dataType="number"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="brandName"
+        [header]="'articles.fields.brandName' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        width="150px"
+      ></igx-column>
+      <igx-column
+        field="articleStatus"
+        [header]="'articles.fields.articleStatus' | translate"
+        [sortable]="true"
+        [filterable]="true"
+        dataType="number"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="createdAt"
+        [header]="'articles.fields.createdAt' | translate"
+        [sortable]="true"
+        dataType="date"
+        width="150px"
+      ></igx-column>
+
+      <igx-column
+        [header]="'articles.actions.columnHeader' | translate"
+        [sortable]="false"
+        [filterable]="false"
+        width="420px"
+      >
+        <ng-template igxCell let-cell="cell">
+          <div class="articles-list__actions">
+            <button
+              type="button"
+              class="articles-list__action-btn articles-list__action-btn--edit"
+              (click)="onEdit(cell.row.data)"
+              [title]="'common.edit' | translate"
+            >
+              <igx-icon family="material">edit</igx-icon>
+              <span>{{ 'common.edit' | translate }}</span>
+            </button>
+            <button
+              type="button"
+              class="articles-list__action-btn articles-list__action-btn--properties"
+              (click)="onViewProperties(cell.row.data)"
+              [title]="'articles.actions.properties' | translate"
+            >
+              <igx-icon family="material">tune</igx-icon>
+              <span>{{ 'articles.actions.properties' | translate }}</span>
+            </button>
+            <button
+              type="button"
+              class="articles-list__action-btn articles-list__action-btn--weights"
+              (click)="onViewWeightsDimensions(cell.row.data)"
+              [title]="'articles.actions.weightsDimensions' | translate"
+            >
+              <igx-icon family="material">scale</igx-icon>
+              <span>{{ 'articles.actions.weightsDimensions' | translate }}</span>
+            </button>
+            <button
+              type="button"
+              class="articles-list__action-btn articles-list__action-btn--hierarchy"
+              (click)="onViewHierarchy(cell.row.data)"
+              [title]="'articles.actions.hierarchy' | translate"
+            >
+              <igx-icon family="material">account_tree</igx-icon>
+              <span>{{ 'articles.actions.hierarchy' | translate }}</span>
+            </button>
+            @if (isActive(cell.row.data)) {
+              <button
+                type="button"
+                class="articles-list__action-btn articles-list__action-btn--deactivate"
+                [disabled]="actionInProgressId() === cell.row.data.articleId"
+                (click)="onDeactivate(cell.row.data)"
+                [title]="'articles.actions.deactivate' | translate"
+              >
+                <igx-icon family="material">block</igx-icon>
+                <span>{{ 'articles.actions.deactivate' | translate }}</span>
+              </button>
+              <button
+                type="button"
+                class="articles-list__action-btn articles-list__action-btn--discontinue"
+                [disabled]="actionInProgressId() === cell.row.data.articleId"
+                (click)="onDiscontinue(cell.row.data)"
+                [title]="'articles.actions.discontinue' | translate"
+              >
+                <igx-icon family="material">cancel</igx-icon>
+                <span>{{ 'articles.actions.discontinue' | translate }}</span>
+              </button>
+            }
+            @if (isInactive(cell.row.data)) {
+              <button
+                type="button"
+                class="articles-list__action-btn articles-list__action-btn--reactivate"
+                [disabled]="actionInProgressId() === cell.row.data.articleId"
+                (click)="onReactivate(cell.row.data)"
+                [title]="'articles.actions.reactivate' | translate"
+              >
+                <igx-icon family="material">check_circle</igx-icon>
+                <span>{{ 'articles.actions.reactivate' | translate }}</span>
+              </button>
+            }
+          </div>
+        </ng-template>
+      </igx-column>
+
+      <igx-paginator
+        [totalRecords]="pagination().totalCount"
+        [perPage]="pagination().pageSize"
+      ></igx-paginator>
+    </igx-grid>
+  }
+</div>

@@ -1,0 +1,151 @@
+<div class="article-hierarchy">
+  <div class="article-hierarchy__header">
+    <h1>{{ 'articles.hierarchy.title' | translate }}</h1>
+    <div class="article-hierarchy__toolbar">
+      <button type="button" class="btn btn--secondary" (click)="onBack()">
+        {{ 'common.back' | translate }}
+      </button>
+      <button type="button" class="btn btn--primary" (click)="toggleCreateForm()">
+        {{ 'common.add' | translate }}
+      </button>
+    </div>
+  </div>
+
+  @if (showCreateForm()) {
+    <div class="article-hierarchy__create-form">
+      <h2>{{ 'articles.hierarchy.createTitle' | translate }}</h2>
+      <form [formGroup]="createForm" (ngSubmit)="onCreateSubmit()" novalidate>
+        <igx-input-group type="border">
+          <label igxLabel for="childArticleId">{{
+            'articles.hierarchy.fields.childArticleId' | translate
+          }}</label>
+          <input igxInput id="childArticleId" formControlName="childArticleId" type="text" />
+        </igx-input-group>
+
+        <igx-input-group type="border">
+          <label igxLabel for="containedQuantity">{{
+            'articles.hierarchy.fields.containedQuantity' | translate
+          }}</label>
+          <input
+            igxInput
+            id="containedQuantity"
+            formControlName="containedQuantity"
+            type="number"
+            step="1"
+            min="1"
+          />
+        </igx-input-group>
+
+        <div class="article-hierarchy__checkbox-group">
+          <igx-checkbox formControlName="isMainUnit">
+            {{ 'articles.hierarchy.fields.isMainUnit' | translate }}
+          </igx-checkbox>
+          <igx-checkbox formControlName="isSubUnit">
+            {{ 'articles.hierarchy.fields.isSubUnit' | translate }}
+          </igx-checkbox>
+          <igx-checkbox formControlName="isOrderUnit">
+            {{ 'articles.hierarchy.fields.isOrderUnit' | translate }}
+          </igx-checkbox>
+          <igx-checkbox formControlName="isDeliveryUnit">
+            {{ 'articles.hierarchy.fields.isDeliveryUnit' | translate }}
+          </igx-checkbox>
+          <igx-checkbox formControlName="isConsumerUnit">
+            {{ 'articles.hierarchy.fields.isConsumerUnit' | translate }}
+          </igx-checkbox>
+          <igx-checkbox formControlName="isSmallestUnit">
+            {{ 'articles.hierarchy.fields.isSmallestUnit' | translate }}
+          </igx-checkbox>
+        </div>
+
+        <div class="article-hierarchy__form-actions">
+          <button type="button" class="btn btn--secondary" (click)="toggleCreateForm()">
+            {{ 'common.cancel' | translate }}
+          </button>
+          <button type="submit" class="btn btn--primary">
+            {{ 'common.save' | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+  }
+
+  @if (loading()) {
+    <p>{{ 'common.loading' | translate }}</p>
+  } @else {
+    <igx-grid [data]="hierarchies()" primaryKey="hierarchyId" [autoGenerate]="false" width="100%">
+      <igx-column
+        field="childArticleId"
+        [header]="'articles.hierarchy.fields.childArticleId' | translate"
+        width="240px"
+      ></igx-column>
+      <igx-column
+        field="containedQuantity"
+        [header]="'articles.hierarchy.fields.containedQuantity' | translate"
+        dataType="number"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="isMainUnit"
+        [header]="'articles.hierarchy.fields.isMainUnit' | translate"
+        dataType="boolean"
+        width="110px"
+      ></igx-column>
+      <igx-column
+        field="isSubUnit"
+        [header]="'articles.hierarchy.fields.isSubUnit' | translate"
+        dataType="boolean"
+        width="110px"
+      ></igx-column>
+      <igx-column
+        field="isOrderUnit"
+        [header]="'articles.hierarchy.fields.isOrderUnit' | translate"
+        dataType="boolean"
+        width="110px"
+      ></igx-column>
+      <igx-column
+        field="isDeliveryUnit"
+        [header]="'articles.hierarchy.fields.isDeliveryUnit' | translate"
+        dataType="boolean"
+        width="120px"
+      ></igx-column>
+      <igx-column
+        field="isConsumerUnit"
+        [header]="'articles.hierarchy.fields.isConsumerUnit' | translate"
+        dataType="boolean"
+        width="130px"
+      ></igx-column>
+      <igx-column
+        field="isSmallestUnit"
+        [header]="'articles.hierarchy.fields.isSmallestUnit' | translate"
+        dataType="boolean"
+        width="130px"
+      ></igx-column>
+      <igx-column
+        field="createdAt"
+        [header]="'articles.fields.createdAt' | translate"
+        dataType="date"
+        width="150px"
+      ></igx-column>
+
+      <igx-column
+        [header]="'articles.actions.columnHeader' | translate"
+        [sortable]="false"
+        [filterable]="false"
+        width="140px"
+      >
+        <ng-template igxCell let-cell="cell">
+          <button
+            type="button"
+            class="article-hierarchy__delete-btn"
+            [disabled]="actionInProgressId() === cell.row.data.hierarchyId"
+            (click)="onDelete(cell.row.data)"
+            [title]="'common.delete' | translate"
+          >
+            <igx-icon family="material">delete</igx-icon>
+            <span>{{ 'common.delete' | translate }}</span>
+          </button>
+        </ng-template>
+      </igx-column>
+    </igx-grid>
+  }
+</div>

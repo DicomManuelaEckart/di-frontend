@@ -1,0 +1,141 @@
+<div class="article-properties">
+  <h1>{{ 'articles.properties.title' | translate }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Trade Flags -->
+    <h2>{{ 'articles.properties.tradeFlags' | translate }}</h2>
+
+    <div class="article-properties__checkbox-group">
+      <igx-checkbox formControlName="isEligibleForBonus">
+        {{ 'articles.properties.fields.isEligibleForBonus' | translate }}
+      </igx-checkbox>
+      <igx-checkbox formControlName="isReturnable">
+        {{ 'articles.properties.fields.isReturnable' | translate }}
+      </igx-checkbox>
+      <igx-checkbox formControlName="conditionBlock">
+        {{ 'articles.properties.fields.conditionBlock' | translate }}
+      </igx-checkbox>
+      <igx-checkbox formControlName="neverOutOfStock">
+        {{ 'articles.properties.fields.neverOutOfStock' | translate }}
+      </igx-checkbox>
+    </div>
+
+    <!-- Dates -->
+    <h2>{{ 'articles.properties.dates' | translate }}</h2>
+
+    <igx-input-group type="border">
+      <label igxLabel for="availableFrom">{{
+        'articles.properties.fields.availableFrom' | translate
+      }}</label>
+      <input igxInput id="availableFrom" formControlName="availableFrom" type="datetime-local" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="earliestSaleDate">{{
+        'articles.properties.fields.earliestSaleDate' | translate
+      }}</label>
+      <input
+        igxInput
+        id="earliestSaleDate"
+        formControlName="earliestSaleDate"
+        type="datetime-local"
+      />
+    </igx-input-group>
+
+    <!-- Appearance -->
+    <h2>{{ 'articles.properties.appearance' | translate }}</h2>
+
+    <igx-input-group type="border">
+      <label igxLabel for="colorCode">{{
+        'articles.properties.fields.colorCode' | translate
+      }}</label>
+      <input igxInput id="colorCode" formControlName="colorCode" type="text" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="colorName">{{
+        'articles.properties.fields.colorName' | translate
+      }}</label>
+      <input igxInput id="colorName" formControlName="colorName" type="text" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="sizeCode">{{ 'articles.properties.fields.sizeCode' | translate }}</label>
+      <input igxInput id="sizeCode" formControlName="sizeCode" type="text" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="sizeName">{{ 'articles.properties.fields.sizeName' | translate }}</label>
+      <input igxInput id="sizeName" formControlName="sizeName" type="text" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="seasonCode">{{
+        'articles.properties.fields.seasonCode' | translate
+      }}</label>
+      <input igxInput id="seasonCode" formControlName="seasonCode" type="text" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="countryOfOrigin">{{
+        'articles.properties.fields.countryOfOrigin' | translate
+      }}</label>
+      <input igxInput id="countryOfOrigin" formControlName="countryOfOrigin" type="text" />
+    </igx-input-group>
+
+    <!-- Order Quantities -->
+    <h2>{{ 'articles.properties.orderQuantities' | translate }}</h2>
+
+    <igx-input-group type="border">
+      <label igxLabel for="minimumOrderQuantity">{{
+        'articles.properties.fields.minimumOrderQuantity' | translate
+      }}</label>
+      <input
+        igxInput
+        id="minimumOrderQuantity"
+        formControlName="minimumOrderQuantity"
+        type="number"
+        step="any"
+      />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="lotFactor">{{
+        'articles.properties.fields.lotFactor' | translate
+      }}</label>
+      <input igxInput id="lotFactor" formControlName="lotFactor" type="number" step="any" />
+    </igx-input-group>
+
+    <!-- Succession -->
+    <h2>{{ 'articles.properties.succession' | translate }}</h2>
+
+    <igx-input-group type="border">
+      <label igxLabel for="successorArticleId">{{
+        'articles.properties.fields.successorArticleId' | translate
+      }}</label>
+      <input igxInput id="successorArticleId" formControlName="successorArticleId" type="text" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="predecessorArticleId">{{
+        'articles.properties.fields.predecessorArticleId' | translate
+      }}</label>
+      <input
+        igxInput
+        id="predecessorArticleId"
+        formControlName="predecessorArticleId"
+        type="text"
+      />
+    </igx-input-group>
+
+    <!-- Actions -->
+    <div class="article-properties__actions">
+      <button type="button" class="btn btn--secondary" (click)="onCancel()">
+        {{ 'common.cancel' | translate }}
+      </button>
+      <button type="submit" class="btn btn--primary" [disabled]="!isDirty()">
+        {{ 'common.save' | translate }}
+      </button>
+    </div>
+  </form>
+</div>
