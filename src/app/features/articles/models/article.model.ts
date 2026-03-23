@@ -101,6 +101,79 @@ export interface DiscontinueArticleResponse {
 }
 
 /**
+ * Update article properties and trade flags.
+ * Maps to OpenAPI: UpdateArticlePropertiesRequest
+ */
+export interface UpdateArticlePropertiesRequest {
+  readonly isEligibleForBonus: boolean;
+  readonly isReturnable: boolean;
+  readonly conditionBlock: boolean;
+  readonly neverOutOfStock: boolean;
+  readonly availableFrom: string | null;
+  readonly earliestSaleDate: string | null;
+  readonly colorCode: string | null;
+  readonly colorName: string | null;
+  readonly sizeCode: string | null;
+  readonly sizeName: string | null;
+  readonly seasonCode: string | null;
+  readonly countryOfOrigin: string | null;
+  readonly minimumOrderQuantity: number | null;
+  readonly lotFactor: number | null;
+  readonly successorArticleId: string | null;
+  readonly predecessorArticleId: string | null;
+}
+
+/**
+ * Update weights, dimensions and pallet information.
+ * Maps to OpenAPI: UpdateWeightsDimensionsRequest
+ */
+export interface UpdateWeightsDimensionsRequest {
+  readonly netWeight: number | null;
+  readonly grossWeight: number | null;
+  readonly weightUnit: string | null;
+  readonly height: number | null;
+  readonly width: number | null;
+  readonly length: number | null;
+  readonly dimensionUnit: string | null;
+  readonly layersPerPallet: number | null;
+  readonly unitsPerLayer: number | null;
+  readonly cartonsPerPallet: number | null;
+}
+
+/**
+ * Create a new article hierarchy relationship.
+ * Maps to OpenAPI: CreateArticleHierarchyRequest
+ */
+export interface CreateArticleHierarchyRequest {
+  readonly childArticleId: string;
+  readonly containedQuantity: number;
+  readonly isMainUnit: boolean;
+  readonly isSubUnit: boolean;
+  readonly isOrderUnit: boolean;
+  readonly isDeliveryUnit: boolean;
+  readonly isConsumerUnit: boolean;
+  readonly isSmallestUnit: boolean;
+}
+
+/**
+ * Article hierarchy relationship response.
+ * Maps to OpenAPI: ArticleHierarchyResponse
+ */
+export interface ArticleHierarchyResponse {
+  readonly hierarchyId: string;
+  readonly parentArticleId: string;
+  readonly childArticleId: string;
+  readonly containedQuantity: number;
+  readonly isMainUnit: boolean;
+  readonly isSubUnit: boolean;
+  readonly isOrderUnit: boolean;
+  readonly isDeliveryUnit: boolean;
+  readonly isConsumerUnit: boolean;
+  readonly isSmallestUnit: boolean;
+  readonly createdAt: string;
+}
+
+/**
  * Pagination metadata.
  * Maps to OpenAPI: PaginationMetadata
  */

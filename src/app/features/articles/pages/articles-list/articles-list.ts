@@ -93,6 +93,35 @@ export class ArticlesList implements OnInit {
     return item.articleStatus === ArticleStatus.Inactive;
   }
 
+  protected isDiscontinued(item: ArticleResponse): boolean {
+    return item.articleStatus === ArticleStatus.Discontinued;
+  }
+
+  protected onDiscontinue(item: ArticleResponse): void {
+    this.actionInProgressId.set(item.articleId);
+    this.articleApiService.discontinue(item.articleId, { successorArticleId: null }).subscribe({
+      next: () => {
+        this.articleService.discontinueItem(item.articleId);
+        this.actionInProgressId.set(null);
+      },
+      error: () => {
+        this.actionInProgressId.set(null);
+      },
+    });
+  }
+
+  protected onViewProperties(item: ArticleResponse): void {
+    void this.router.navigate(['/articles', item.articleId, 'properties']);
+  }
+
+  protected onViewWeightsDimensions(item: ArticleResponse): void {
+    void this.router.navigate(['/articles', item.articleId, 'weights-dimensions']);
+  }
+
+  protected onViewHierarchy(item: ArticleResponse): void {
+    void this.router.navigate(['/articles', item.articleId, 'hierarchy']);
+  }
+
   private loadData(params?: ArticleFilterParams): void {
     this.articleService.setLoading(true);
     this.articleApiService.getAll(params).subscribe({

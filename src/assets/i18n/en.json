@@ -169,10 +169,72 @@
     "actions": {
       "columnHeader": "Actions",
       "deactivate": "Deactivate",
-      "reactivate": "Reactivate"
+      "reactivate": "Reactivate",
+      "discontinue": "Discontinue",
+      "properties": "Properties",
+      "weightsDimensions": "Weights & Dimensions",
+      "hierarchy": "Hierarchy"
     },
     "validation": {
       "minZero": "Value must be at least 0."
+    },
+    "properties": {
+      "title": "Article – Properties",
+      "tradeFlags": "Trade Flags",
+      "dates": "Dates",
+      "appearance": "Appearance",
+      "orderQuantities": "Order Quantities",
+      "succession": "Succession",
+      "fields": {
+        "isEligibleForBonus": "Eligible for Bonus",
+        "isReturnable": "Returnable",
+        "conditionBlock": "Condition Block",
+        "neverOutOfStock": "Never Out of Stock",
+        "availableFrom": "Available From",
+        "earliestSaleDate": "Earliest Sale Date",
+        "colorCode": "Color Code",
+        "colorName": "Color Name",
+        "sizeCode": "Size Code",
+        "sizeName": "Size Name",
+        "seasonCode": "Season Code",
+        "countryOfOrigin": "Country of Origin",
+        "minimumOrderQuantity": "Minimum Order Quantity",
+        "lotFactor": "Lot Factor",
+        "successorArticleId": "Successor Article ID",
+        "predecessorArticleId": "Predecessor Article ID"
+      }
+    },
+    "weightsDimensions": {
+      "title": "Article – Weights & Dimensions",
+      "weight": "Weight",
+      "dimensions": "Dimensions",
+      "pallet": "Pallet Information",
+      "fields": {
+        "netWeight": "Net Weight",
+        "grossWeight": "Gross Weight",
+        "weightUnit": "Weight Unit",
+        "height": "Height",
+        "width": "Width",
+        "length": "Length",
+        "dimensionUnit": "Dimension Unit",
+        "layersPerPallet": "Layers per Pallet",
+        "unitsPerLayer": "Units per Layer",
+        "cartonsPerPallet": "Cartons per Pallet"
+      }
+    },
+    "hierarchy": {
+      "title": "Article – Hierarchy",
+      "createTitle": "Add Hierarchy Relationship",
+      "fields": {
+        "childArticleId": "Child Article ID",
+        "containedQuantity": "Contained Quantity",
+        "isMainUnit": "Main Unit",
+        "isSubUnit": "Sub Unit",
+        "isOrderUnit": "Order Unit",
+        "isDeliveryUnit": "Delivery Unit",
+        "isConsumerUnit": "Consumer Unit",
+        "isSmallestUnit": "Smallest Unit"
+      }
     }
   },
   "validation": {

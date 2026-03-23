@@ -1,0 +1,106 @@
+<div class="article-weights-dimensions">
+  <h1>{{ 'articles.weightsDimensions.title' | translate }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Weight -->
+    <h2>{{ 'articles.weightsDimensions.weight' | translate }}</h2>
+
+    <igx-input-group type="border">
+      <label igxLabel for="netWeight">{{
+        'articles.weightsDimensions.fields.netWeight' | translate
+      }}</label>
+      <input igxInput id="netWeight" formControlName="netWeight" type="number" step="any" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="grossWeight">{{
+        'articles.weightsDimensions.fields.grossWeight' | translate
+      }}</label>
+      <input igxInput id="grossWeight" formControlName="grossWeight" type="number" step="any" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="weightUnit">{{
+        'articles.weightsDimensions.fields.weightUnit' | translate
+      }}</label>
+      <input igxInput id="weightUnit" formControlName="weightUnit" type="text" />
+    </igx-input-group>
+
+    <!-- Dimensions -->
+    <h2>{{ 'articles.weightsDimensions.dimensions' | translate }}</h2>
+
+    <igx-input-group type="border">
+      <label igxLabel for="height">{{
+        'articles.weightsDimensions.fields.height' | translate
+      }}</label>
+      <input igxInput id="height" formControlName="height" type="number" step="any" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="width">{{
+        'articles.weightsDimensions.fields.width' | translate
+      }}</label>
+      <input igxInput id="width" formControlName="width" type="number" step="any" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="length">{{
+        'articles.weightsDimensions.fields.length' | translate
+      }}</label>
+      <input igxInput id="length" formControlName="length" type="number" step="any" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="dimensionUnit">{{
+        'articles.weightsDimensions.fields.dimensionUnit' | translate
+      }}</label>
+      <input igxInput id="dimensionUnit" formControlName="dimensionUnit" type="text" />
+    </igx-input-group>
+
+    <!-- Pallet -->
+    <h2>{{ 'articles.weightsDimensions.pallet' | translate }}</h2>
+
+    <igx-input-group type="border">
+      <label igxLabel for="layersPerPallet">{{
+        'articles.weightsDimensions.fields.layersPerPallet' | translate
+      }}</label>
+      <input
+        igxInput
+        id="layersPerPallet"
+        formControlName="layersPerPallet"
+        type="number"
+        step="1"
+      />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="unitsPerLayer">{{
+        'articles.weightsDimensions.fields.unitsPerLayer' | translate
+      }}</label>
+      <input igxInput id="unitsPerLayer" formControlName="unitsPerLayer" type="number" step="1" />
+    </igx-input-group>
+
+    <igx-input-group type="border">
+      <label igxLabel for="cartonsPerPallet">{{
+        'articles.weightsDimensions.fields.cartonsPerPallet' | translate
+      }}</label>
+      <input
+        igxInput
+        id="cartonsPerPallet"
+        formControlName="cartonsPerPallet"
+        type="number"
+        step="1"
+      />
+    </igx-input-group>
+
+    <!-- Actions -->
+    <div class="article-weights-dimensions__actions">
+      <button type="button" class="btn btn--secondary" (click)="onCancel()">
+        {{ 'common.cancel' | translate }}
+      </button>
+      <button type="submit" class="btn btn--primary" [disabled]="!isDirty()">
+        {{ 'common.save' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

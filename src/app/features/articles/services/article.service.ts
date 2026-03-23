@@ -48,4 +48,14 @@ export class ArticleService {
       ),
     );
   }
+
+  discontinueItem(articleId: string): void {
+    this.itemsSignal.update((items) =>
+      items.map((item) =>
+        item.articleId === articleId
+          ? { ...item, articleStatus: ArticleStatus.Discontinued }
+          : item,
+      ),
+    );
+  }
 }

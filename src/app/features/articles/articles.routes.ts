@@ -25,4 +25,30 @@ export const articlesRoutes: Routes = [
     canActivate: [authGuard, permissionGuard],
     data: { permission: 'articles.edit' },
   },
+  {
+    path: ':id/properties',
+    loadComponent: () =>
+      import('./pages/article-properties/article-properties').then((m) => m.ArticleProperties),
+    title: 'Articles – Properties',
+    canActivate: [authGuard, permissionGuard],
+    data: { permission: 'articles.edit' },
+  },
+  {
+    path: ':id/weights-dimensions',
+    loadComponent: () =>
+      import('./pages/article-weights-dimensions/article-weights-dimensions').then(
+        (m) => m.ArticleWeightsDimensions,
+      ),
+    title: 'Articles – Weights & Dimensions',
+    canActivate: [authGuard, permissionGuard],
+    data: { permission: 'articles.edit' },
+  },
+  {
+    path: ':id/hierarchy',
+    loadComponent: () =>
+      import('./pages/article-hierarchy/article-hierarchy').then((m) => m.ArticleHierarchy),
+    title: 'Articles – Hierarchy',
+    canActivate: [authGuard, permissionGuard],
+    data: { permission: 'articles.edit' },
+  },
 ];

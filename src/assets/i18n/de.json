@@ -169,10 +169,72 @@
     "actions": {
       "columnHeader": "Aktionen",
       "deactivate": "Deaktivieren",
-      "reactivate": "Reaktivieren"
+      "reactivate": "Reaktivieren",
+      "discontinue": "Einstellen",
+      "properties": "Eigenschaften",
+      "weightsDimensions": "Gewichte & Maße",
+      "hierarchy": "Hierarchie"
     },
     "validation": {
       "minZero": "Der Wert muss mindestens 0 sein."
+    },
+    "properties": {
+      "title": "Artikel – Eigenschaften",
+      "tradeFlags": "Handelsmerkmale",
+      "dates": "Termine",
+      "appearance": "Aussehen",
+      "orderQuantities": "Bestellmengen",
+      "succession": "Nachfolge",
+      "fields": {
+        "isEligibleForBonus": "Bonusberechtigt",
+        "isReturnable": "Retournierbar",
+        "conditionBlock": "Konditionssperre",
+        "neverOutOfStock": "Nie ausverkauft",
+        "availableFrom": "Verfügbar ab",
+        "earliestSaleDate": "Frühestes Verkaufsdatum",
+        "colorCode": "Farbcode",
+        "colorName": "Farbbezeichnung",
+        "sizeCode": "Größencode",
+        "sizeName": "Größenbezeichnung",
+        "seasonCode": "Saisoncode",
+        "countryOfOrigin": "Ursprungsland",
+        "minimumOrderQuantity": "Mindestbestellmenge",
+        "lotFactor": "Losfaktor",
+        "successorArticleId": "Nachfolgeartikel-ID",
+        "predecessorArticleId": "Vorgängerartikel-ID"
+      }
+    },
+    "weightsDimensions": {
+      "title": "Artikel – Gewichte & Maße",
+      "weight": "Gewicht",
+      "dimensions": "Abmessungen",
+      "pallet": "Paletteninformationen",
+      "fields": {
+        "netWeight": "Nettogewicht",
+        "grossWeight": "Bruttogewicht",
+        "weightUnit": "Gewichtseinheit",
+        "height": "Höhe",
+        "width": "Breite",
+        "length": "Länge",
+        "dimensionUnit": "Maßeinheit",
+        "layersPerPallet": "Lagen pro Palette",
+        "unitsPerLayer": "Einheiten pro Lage",
+        "cartonsPerPallet": "Kartons pro Palette"
+      }
+    },
+    "hierarchy": {
+      "title": "Artikel – Hierarchie",
+      "createTitle": "Hierarchiebeziehung hinzufügen",
+      "fields": {
+        "childArticleId": "Unterartikel-ID",
+        "containedQuantity": "Enthaltene Menge",
+        "isMainUnit": "Haupteinheit",
+        "isSubUnit": "Untereinheit",
+        "isOrderUnit": "Bestelleinheit",
+        "isDeliveryUnit": "Liefereinheit",
+        "isConsumerUnit": "Verbrauchereinheit",
+        "isSmallestUnit": "Kleinste Einheit"
+      }
     }
   },
   "validation": {

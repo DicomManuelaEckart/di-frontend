@@ -81,7 +81,7 @@
         [header]="'articles.actions.columnHeader' | translate"
         [sortable]="false"
         [filterable]="false"
-        width="220px"
+        width="420px"
       >
         <ng-template igxCell let-cell="cell">
           <div class="articles-list__actions">
@@ -94,6 +94,33 @@
               <igx-icon family="material">edit</igx-icon>
               <span>{{ 'common.edit' | translate }}</span>
             </button>
+            <button
+              type="button"
+              class="articles-list__action-btn articles-list__action-btn--properties"
+              (click)="onViewProperties(cell.row.data)"
+              [title]="'articles.actions.properties' | translate"
+            >
+              <igx-icon family="material">tune</igx-icon>
+              <span>{{ 'articles.actions.properties' | translate }}</span>
+            </button>
+            <button
+              type="button"
+              class="articles-list__action-btn articles-list__action-btn--weights"
+              (click)="onViewWeightsDimensions(cell.row.data)"
+              [title]="'articles.actions.weightsDimensions' | translate"
+            >
+              <igx-icon family="material">scale</igx-icon>
+              <span>{{ 'articles.actions.weightsDimensions' | translate }}</span>
+            </button>
+            <button
+              type="button"
+              class="articles-list__action-btn articles-list__action-btn--hierarchy"
+              (click)="onViewHierarchy(cell.row.data)"
+              [title]="'articles.actions.hierarchy' | translate"
+            >
+              <igx-icon family="material">account_tree</igx-icon>
+              <span>{{ 'articles.actions.hierarchy' | translate }}</span>
+            </button>
             @if (isActive(cell.row.data)) {
               <button
                 type="button"
@@ -104,6 +131,16 @@
               >
                 <igx-icon family="material">block</igx-icon>
                 <span>{{ 'articles.actions.deactivate' | translate }}</span>
+              </button>
+              <button
+                type="button"
+                class="articles-list__action-btn articles-list__action-btn--discontinue"
+                [disabled]="actionInProgressId() === cell.row.data.articleId"
+                (click)="onDiscontinue(cell.row.data)"
+                [title]="'articles.actions.discontinue' | translate"
+              >
+                <igx-icon family="material">cancel</igx-icon>
+                <span>{{ 'articles.actions.discontinue' | translate }}</span>
               </button>
             }
             @if (isInactive(cell.row.data)) {

@@ -5,8 +5,14 @@ import { Observable } from 'rxjs';
 import { API_BASE_URL } from '../../../core/tokens/api-base-url.token';
 import {
   ArticleResponse,
+  ArticleHierarchyResponse,
   CreateArticleRequest,
+  CreateArticleHierarchyRequest,
+  DiscontinueArticleRequest,
+  DiscontinueArticleResponse,
   UpdateArticleRequest,
+  UpdateArticlePropertiesRequest,
+  UpdateWeightsDimensionsRequest,
   PagedArticleResponse,
   ArticleFilterParams,
 } from '../models/article.model';
@@ -32,6 +38,10 @@ export class ArticleApiService {
     return this.http.get<ArticleResponse>(`${this.baseUrl}/${id}`);
   }
 
+  getByGtin(gtin: string): Observable<ArticleResponse> {
+    return this.http.get<ArticleResponse>(`${this.baseUrl}/by-gtin/${gtin}`);
+  }
+
   create(request: CreateArticleRequest): Observable<ArticleResponse> {
     return this.http.post<ArticleResponse>(this.baseUrl, request);
   }
@@ -40,11 +50,47 @@ export class ArticleApiService {
     return this.http.put<ArticleResponse>(`${this.baseUrl}/${id}`, request);
   }
 
+  updateProperties(
+    id: string,
+    request: UpdateArticlePropertiesRequest,
+  ): Observable<ArticleResponse> {
+    return this.http.put<ArticleResponse>(`${this.baseUrl}/${id}/properties`, request);
+  }
+
+  updateWeightsDimensions(
+    id: string,
+    request: UpdateWeightsDimensionsRequest,
+  ): Observable<ArticleResponse> {
+    return this.http.put<ArticleResponse>(`${this.baseUrl}/${id}/weights-dimensions`, request);
+  }
+
   deactivate(id: string): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/${id}/deactivate`, {});
   }
 
   reactivate(id: string): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/${id}/reactivate`, {});
+  }
+
+  discontinue(
+    id: string,
+    request: DiscontinueArticleRequest,
+  ): Observable<DiscontinueArticleResponse> {
+    return this.http.post<DiscontinueArticleResponse>(`${this.baseUrl}/${id}/discontinue`, request);
+  }
+
+  getHierarchies(id: string): Observable<ArticleHierarchyResponse[]> {
+    return this.http.get<ArticleHierarchyResponse[]>(`${this.baseUrl}/${id}/hierarchy`);
+  }
+
+  createHierarchy(
+    id: string,
+    request: CreateArticleHierarchyRequest,
+  ): Observable<ArticleHierarchyResponse> {
+    return this.http.post<ArticleHierarchyResponse>(`${this.baseUrl}/${id}/hierarchy`, request);
+  }
+
+  deleteHierarchy(id: string, hierarchyId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}/hierarchy/${hierarchyId}`);
   }
 }

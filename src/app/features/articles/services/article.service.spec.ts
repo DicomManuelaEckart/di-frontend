@@ -125,4 +125,26 @@ describe('ArticleService', () => {
 
     expect(service.items()[0].articleStatus).toBe(ArticleStatus.Active);
   });
+
+  it('should discontinue an item by id', () => {
+    service.setItems([mockArticle]);
+
+    service.discontinueItem('a-1');
+
+    expect(service.items()[0].articleStatus).toBe(ArticleStatus.Discontinued);
+  });
+
+  it('should not modify other items when discontinuing', () => {
+    const secondArticle: ArticleResponse = {
+      ...mockArticle,
+      articleId: 'a-2',
+      articleNr: 'ART-002',
+    };
+    service.setItems([mockArticle, secondArticle]);
+
+    service.discontinueItem('a-1');
+
+    expect(service.items()[0].articleStatus).toBe(ArticleStatus.Discontinued);
+    expect(service.items()[1].articleStatus).toBe(ArticleStatus.Active);
+  });
 });
